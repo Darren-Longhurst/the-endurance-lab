@@ -1,0 +1,178 @@
+[
+  {
+    "model": "products.productvariant",
+    "pk": 1,
+    "fields": {
+      "product": 1,
+      "variant_type": "Flavor",
+      "variant_value": "Summer Berry",
+      "price_modifier": "0.00",
+      "stock_count": 100
+    }
+  },
+  {
+    "model": "products.productvariant",
+    "pk": 2,
+    "fields": {
+      "product": 1,
+      "variant_type": "Flavor",
+      "variant_value": "Zesty Citrus",
+      "price_modifier": "0.00",
+      "stock_count": 100
+    }
+  },
+  {
+    "model": "products.productvariant",
+    "pk": 3,
+    "fields": {
+      "product": 1,
+      "variant_type": "Format",
+      "variant_value": "Box of 12",
+      "price_modifier": "18.00",
+      "stock_count": 20
+    }
+  },
+  {
+    "model": "products.productvariant",
+    "pk": 4,
+    "fields": {
+      "product": 5,
+      "variant_type": "Flavor",
+      "variant_value": "Lemon & Lime",
+      "price_modifier": "0.00",
+      "stock_count": 150
+    }
+  },
+  {
+    "model": "products.productvariant",
+    "pk": 5,
+    "fields": {
+      "product": 5,
+      "variant_type": "Flavor",
+      "variant_value": "Tropical Juice",
+      "price_modifier": "0.00",
+      "stock_count": 150
+    }
+  },
+  {
+    "model": "products.productvariant",
+    "pk": 6,
+    "fields": {
+      "product": 6,
+      "variant_type": "Strength",
+      "variant_value": "PH 500 (Moderate)",
+      "price_modifier": "0.00",
+      "stock_count": 80
+    }
+  },
+  {
+    "model": "products.productvariant",
+    "pk": 7,
+    "fields": {
+      "product": 6,
+      "variant_type": "Strength",
+      "variant_value": "PH 1500 (High Sodium)",
+      "price_modifier": "5.00",
+      "stock_count": 40
+    }
+  },
+  {
+    "model": "products.productvariant",
+    "pk": 8,
+    "fields": {
+      "product": 7,
+      "variant_type": "Flavor",
+      "variant_value": "Swiss Chocolate",
+      "price_modifier": "0.00",
+      "stock_count": 60
+    }
+  },
+  {
+    "model": "products.productvariant",
+    "pk": 9,
+    "fields": {
+      "product": 7,
+      "variant_type": "Flavor",
+      "variant_value": "Smooth Vanilla",
+      "price_modifier": "0.00",
+      "stock_count": 60
+    }
+  },
+  {
+    "model": "products.productvariant",
+    "pk": 10,
+    "fields": {
+      "product": 12,
+      "variant_type": "Size",
+      "variant_value": "Small",
+      "price_modifier": "0.00",
+      "stock_count": 25
+    }
+  },
+  {
+    "model": "products.productvariant",
+    "pk": 11,
+    "fields": {
+      "product": 12,
+      "variant_type": "Size",
+      "variant_value": "Medium",
+      "price_modifier": "0.00",
+      "stock_count": 50
+    }
+  },
+  {
+    "model": "products.productvariant",
+    "pk": 12,
+    "fields": {
+      "product": 12,
+      "variant_type": "Size",
+      "variant_value": "Large",
+      "price_modifier": "0.00",
+      "stock_count": 40
+    }
+  },
+  {
+    "model": "products.productvariant",
+    "pk": 13,
+    "fields": {
+      "product": 15,
+      "variant_type": "Flavor",
+      "variant_value": "Summer Berry",
+      "price_modifier": "0.00",
+      "stock_count": 100
+    }
+  },
+  {
+    "model": "products.productvariant",
+    "pk": 14,
+    "fields": {
+      "product": 15,
+      "variant_type": "Flavor",
+      "variant_value": "Zesty Citrus",
+      "price_modifier": "0.00",
+      "stock_count": 100
+    }
+  },
+  {
+    "model": "products.productvariant",
+    "pk": 15,
+    "fields": {
+      "product": 15,
+      "variant_type": "Format",
+      "variant_value": "Box of 12",
+      "price_modifier": "22.00",
+      "stock_count": 15
+    }
+  },
+  {
+    "model": "products.productvariant",
+    "pk": 16,
+    "fields": {
+      "product": 15,
+      "variant_type": "Format",
+      "variant_value": "Single Gel",
+      "price_modifier": "0.00",
+      "stock_count": 200
+    }
+  }
+]

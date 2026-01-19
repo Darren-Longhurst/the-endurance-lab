@@ -121,9 +121,9 @@ body .header-container {
 
 /* Hero Button Hover State */
 .hero-btn:hover {
-    background-color: transparent;
+    background-color: var(--secondary-color);
     color: var(--primary-color);
-    border: 0.5px solid var(--primary-color);
+    border: 0.5px solid var(--secondary-color);
 }
 
 .lead  {

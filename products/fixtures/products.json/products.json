@@ -1,0 +1,197 @@
+[
+  {
+    "model": "products.product",
+    "pk": 1,
+    "fields": {
+      "category": 1,
+      "sku": "EN-GEL",
+      "name": "Rapid-Release Energy Gels",
+      "is_special_offer": true,
+      "description": "Scientifically formulated with a 2:1 maltodextrin to fructose ratio for maximum carbohydrate absorption. These gels provide 22g of fast-acting fuel without the need for additional water.",
+      "price": "1.99",
+      "rating": "4.50"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 2,
+    "fields": {
+      "category": 1,
+      "sku": "EN-PWD",
+      "name": "Advanced Energy Powder",
+      "is_special_offer": false,
+      "description": "A high-calorie carbohydrate drink mix designed for events exceeding 2 hours. Contains essential electrolytes to maintain fluid balance while delivering steady energy.",
+      "price": "18.50",
+      "rating": "4.20"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 3,
+    "fields": {
+      "category": 1,
+      "sku": "EN-BAR",
+      "name": "Endurance Energy Bars",
+      "is_special_offer": false,
+      "description": "Made with natural oats and real fruit, providing a mix of complex and simple carbohydrates. Easy on the stomach during low-to-moderate intensity efforts.",
+      "price": "2.50",
+      "rating": "4.30"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 4,
+    "fields": {
+      "category": 1,
+      "sku": "EN-DRK",
+      "name": "Pre-Race Energy Drinks",
+      "is_special_offer": false,
+      "description": "The ultimate pre-workout booster. Combining caffeine and beta-alanine to sharpen focus and delay fatigue before you hit the start line.",
+      "price": "2.99",
+      "rating": "4.00"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 5,
+    "fields": {
+      "category": 2,
+      "sku": "HY-TAB",
+      "name": "Precision Hydration Tabs",
+      "is_special_offer": true,
+      "description": "Effervescent electrolyte tablets that turn any water bottle into a performance tool. Zero sugar, focusing purely on replacing Sodium, Magnesium, and Potassium.",
+      "price": "7.99",
+      "rating": "4.80"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 6,
+    "fields": {
+      "category": 2,
+      "sku": "HY-PWD",
+      "name": "High-Sodium Electrolyte Powder",
+      "is_special_offer": false,
+      "description": "Designed for heavy sweaters and ultra-endurance athletes. Pharmaceutical-grade powder for precise hydration management in extreme heat.",
+      "price": "14.99",
+      "rating": "4.70"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 7,
+    "fields": {
+      "category": 3,
+      "sku": "RE-PWD",
+      "name": "Complete Recovery Protein",
+      "is_special_offer": false,
+      "description": "A premium blend of whey protein isolate and fast-digesting carbohydrates. Fortified with L-Glutamine to support muscle repair immediately post-workout.",
+      "price": "28.00",
+      "rating": "4.90"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 8,
+    "fields": {
+      "category": 3,
+      "sku": "RE-SHK",
+      "name": "Lab-Spec Shaker Bottle",
+      "is_special_offer": true,
+      "description": "A 700ml BPA-free shaker with a leak-proof lid. Features a stainless steel mixing ball to ensure smooth, clump-free recovery shakes.",
+      "price": "8.50",
+      "rating": "4.40"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 9,
+    "fields": {
+      "category": 4,
+      "sku": "SU-VIT",
+      "name": "Performance Multi-Vitamins",
+      "is_special_offer": false,
+      "description": "Tailored for the metabolic demands of athletes. High doses of Vitamin D, B12, and Iron to support energy metabolism and immune function.",
+      "price": "19.99",
+      "rating": "4.60"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 10,
+    "fields": {
+      "category": 4,
+      "sku": "SU-OM3",
+      "name": "Ultra-Pure Omega 3",
+      "is_special_offer": false,
+      "description": "Triple-strength fish oil providing high levels of EPA and DHA. Essential for reducing systemic inflammation and supporting joint mobility.",
+      "price": "15.00",
+      "rating": "4.50"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 11,
+    "fields": {
+      "category": 4,
+      "sku": "SU-BIO",
+      "name": "Biotin Complex",
+      "is_special_offer": false,
+      "description": "Support for hair, skin, and connective tissue. Vital for long-term health when training load is high.",
+      "price": "12.99",
+      "rating": "4.30"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 12,
+    "fields": {
+      "category": 5,
+      "sku": "ME-TSH",
+      "name": "Technical Lab Training Tee",
+      "is_special_offer": false,
+      "description": "Ultra-breathable, moisture-wicking fabric with flat-lock seams to prevent chafing. Features subtle reflective detailing for safety.",
+      "price": "24.00",
+      "rating": "4.80"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 13,
+    "fields": {
+      "category": 5,
+      "sku": "ME-CAP",
+      "name": "Pro-Vent Running Cap",
+      "is_special_offer": false,
+      "description": "Lightweight, foldable cap with mesh ventilation. Designed to wick sweat while providing UPF 50 sun protection.",
+      "price": "16.00",
+      "rating": "4.20"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 14,
+    "fields": {
+      "category": 5,
+      "sku": "ME-BEN",
+      "name": "Winter Beanie",
+      "is_special_offer": true,
+      "description": "Thermal knit beanie for cold-weather training sessions. High-visibility logo for safety during dark winter miles.",
+      "price": "14.00",
+      "rating": "4.10"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 15,
+    "fields": {
+      "category": 1,
+      "sku": "EN-GEL-CAF",
+      "name": "Rapid-Release Gel + Caffeine",
+      "is_special_offer": false,
+      "description": "Our best-selling energy gel, now fortified with 75mg of caffeine to reduce perceived exertion and provide a mental edge. Contains the same 2:1 maltodextrin to fructose ratio for stomach comfort.",
+      "price": "2.50",
+      "rating": "4.80"
+    }
+  }
+]
