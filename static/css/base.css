@@ -145,6 +145,35 @@ body {
     z-index: -1;
 }
 
+/* Sale Ribbon on Product Cards */
+
+.image-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+
+.image-wrapper a {
+  display: block;
+}
+
+.image-wrapper img.card-img-top {
+  display: block;
+  width: 100%;
+}
+
+
+.sale-ribbon {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 35%;
+    max-width: 240px;
+    min-width: 120px;
+    height: auto;
+    z-index: 10;
+}
+
 /* --- 5. Media Queries (Desktop Adjustments) --- */
 
 @media (min-width: 992px) {

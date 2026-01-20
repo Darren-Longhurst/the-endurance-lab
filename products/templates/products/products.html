@@ -14,7 +14,13 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col text-center mt-3">
-                <h1 class="hero-font text-center mt-5">Our Products</h1>
+                <h1 class="hero-font text-center mt-5">
+                    {% if special_offers %}
+                        Special Offers
+                    {% else %}
+                        Our Products
+                    {% endif %}
+                </h1>
                 <hr class="w-50 mb-1">
             </div>
         </div>
@@ -23,29 +29,39 @@
                 <div class="row mt-1 mb-2"></div>
                 <div class="row">
                     {% for product in products %}
-                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                            <div class="card h-100 border-0">
-                                {% if product.image %}
-                                <a href="{% url 'product_detail' product.id %}">
-                                    <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
-                                </a>
-                                {% else %}
-                                <a href="{% url 'product_detail' product.id %}">
-                                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
-                                </a>
-                                {% endif %}
-                                <div class="card-body pb-0">
-                                    <p class="mb-0">{{ product.name }}</p>
-                                </div>
-                                <div class="card-footer bg-white pt-0 border-0 text-left">
-                                    <div class="row">
-                                        <div class="col">
-                                            <p class="lead mb-0 text-left font-weight-bold">£{{ product.price }}</p>
-                                            {% if product.rating %}
-                                                <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
-                                            {% else %}
-                                                <small class="text-muted">No Rating</small>
-                                            {% endif %}
+    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+        <div class="card h-100 border-0 position-relative overflow-hidden">
+<div class="image-wrapper">
+            {% if product.is_special_offer %}
+                <img src="{% static 'images/ribbon-image.png' %}" class="sale-ribbon" alt="Sale">
+            {% endif %}
+
+            {% if product.image %}
+                <a href="{% url 'product_detail' product.id %}">
+                    <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                </a>
+            {% else %}
+                <a href="{% url 'product_detail' product.id %}">
+                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                </a>
+            {% endif %}
+        </div>
+
+            <div class="card-body pb-0">
+                <p class="mb-0">{{ product.name }}</p>
+            </div>
+
+            <div class="card-footer bg-white pt-0 border-0 text-left">
+                <div class="row">
+                    <div class="col">
+                        <p class="lead mb-0 text-left font-weight-bold {% if product.is_special_offer %}text-danger{% endif %}">
+                            £{{ product.price }}
+                        </p>
+                        {% if product.rating %}
+                            <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
+                        {% else %}
+                            <small class="text-muted">No Rating</small>
+                        {% endif %}
                                         </div>
                                     </div>
                                 </div>
