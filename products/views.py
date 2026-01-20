@@ -3,6 +3,7 @@ from django.db.models import Q
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
 from .models import Product, Category, ProductVariant
+from products import models
 
 # Create your views here.
 
@@ -13,8 +14,24 @@ def all_products(request):
     query = None
     categories = None
     special_offers = False
+    sort = None
+    direction = None
 
     if request.GET:
+        # Handle sorting
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+            sort = sortkey
+            if sortkey == 'name':
+                sortkey = 'lower_name'
+                products = products.annotate(lower_name=models.functions.Lower('name'))
+        # Handle sort direction
+            if 'direction' in request.GET:
+                direction = request.GET['direction']
+                if direction == 'desc':
+                    sortkey = f'-{sortkey}'
+            products = products.order_by(sortkey)
+
         # Handle category filtering
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
@@ -37,11 +54,14 @@ def all_products(request):
             )
             products = products.filter(queries)
 
+    current_sorting = f'{sort}_{direction}'
+
     context = {
         'products': products,
         'search_term': query if 'q' in request.GET else '',
         'current_categories': categories,
         'special_offers': special_offers,
+        'current_sorting': current_sorting,
     }
 
     return render(request, 'products/products.html', context)
