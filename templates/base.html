@@ -2,8 +2,8 @@
 
 {% url 'home' as home_url %}
 {% url 'products' as products_url %}
-{% url 'view_bag' as bag_url %}
-{% url 'add_to_bag' as add_to_bag_url %}
+{% url 'view_cart' as view_cart_url %}
+{% url 'add_to_cart' as add_to_cart_url %}
 
 
 <!doctype html>
@@ -94,7 +94,7 @@
                     </div>
                 </li>
                 <li class="list-inline-item">
-                    <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-white{% endif %} nav-link" href="{{ bag_url }}">
+                    <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-white{% endif %} nav-link" href="{{ view_cart_url }}">
                         <div class="text-center">
                             <div><i class="fas fa-shopping-cart fa-lg"></i></div>
                             <p class="my-0">
