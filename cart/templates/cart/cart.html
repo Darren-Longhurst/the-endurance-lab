@@ -78,7 +78,7 @@
                                         <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}" data-size="{{ item.size }}"><small>Remove</small></a>
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0">£{{ item.line_total|floatformat:2 }}</p>
+                                        <p class="my-0">£{{ item.lineitem_total|floatformat:2 }}</p>
                                     </td>
                                 </tr>
                             {% endfor %}
@@ -109,7 +109,7 @@
                                         </span>
                                         <span class="text-uppercase">Keep Shopping</span>
                                     </a>
-                                    <a href="" class="btn btn-black rounded-0 btn-lg">
+                                    <a href="{% url 'checkout' %}" class="btn btn-black rounded-0 btn-lg">
                                         <span class="text-uppercase">Secure Checkout</span>
                                         <span class="icon">
                                             <i class="fas fa-lock"></i>
