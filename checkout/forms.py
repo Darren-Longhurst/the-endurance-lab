@@ -16,6 +16,10 @@ class OrderForm(forms.ModelForm):
         labels and set autofocus on first field
         """
         super().__init__(*args, **kwargs)
+
+        self.fields['street_address1'].required = True
+        self.fields['postcode'].required = True
+
         placeholders = {
             'full_name': 'Full Name',
             'email': 'Email Address',
