@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
+import dj_database_url
 from pathlib import Path
 if os.path.exists("env.py"):
     import env
@@ -28,6 +29,7 @@ DEBUG = os.environ.get('DEVELOPMENT') == 'True'
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
+    'the-endurance-lab-af104b96933b.herokuapp.com', #Heroku
 ]
 
 # Application definition
@@ -120,12 +122,20 @@ WSGI_APPLICATION = 'the_endurance_lab.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# Postgres Database
+
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
-}
+else:
+# Production SQlite Database
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # Cloudinary settings
 CLOUDINARY_STORAGE = {
