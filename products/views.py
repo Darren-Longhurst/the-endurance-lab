@@ -9,67 +9,74 @@ from .forms import ProductForm
 # Create your views here.
 
 def all_products(request):
-    """ A view to show all products, including sorting and search queries """
+    """Show all products, including sorting, category filtering, special offers and search."""
 
     products = Product.objects.all()
-    query = None
+
+    # Defaults
+    query = ""
     categories = None
     special_offers = False
     sort = None
     direction = None
 
-    if request.GET:
-        # Handle sorting
-        if 'sort' in request.GET:
-            sortkey = request.GET['sort']
-            sort = sortkey
-            if sortkey == 'name':
-                sortkey = 'lower_name'
-                products = products.annotate(lower_name=Lower('name'))
+    # --- Sorting ---
+    sort = request.GET.get("sort")
+    direction = request.GET.get("direction")
 
-            if sortkey == 'category':
-                sortkey = 'category__name'
+    sortkey = None
+    if sort:
+        sortkey = sort
 
-        # Handle sort direction
-            if 'direction' in request.GET:
-                direction = request.GET['direction']
-                if direction == 'desc':
-                    sortkey = f'-{sortkey}'
-            products = products.order_by(sortkey)
+        if sort == "name":
+            products = products.annotate(lower_name=Lower("name"))
+            sortkey = "lower_name"
+        elif sort == "category":
+            sortkey = "category__name"
 
-        # Handle category filtering
-        if 'category' in request.GET:
-            categories = request.GET['category'].split(',')
-            products = products.filter(category__name__in=categories)
-            categories = Category.objects.filter(name__in=categories)
-        # Special offers filtering
-        if 'special_offers' in request.GET:
-            special_offers = True
-            products = products.filter(is_special_offer=True)
-        # Handle search queries
-        if 'q' in request.GET:
-            query = request.GET['q']
-            if not query:
-                messages.error(request, "You didn't enter any search criteria!")
-                return render(request, 'products/products.html', {'products': products})
+        if direction == "desc":
+            sortkey = f"-{sortkey}"
 
-            queries = (
-                Q(name__icontains=query) |
-                Q(description__icontains=query)
-            )
-            products = products.filter(queries)
+        products = products.order_by(sortkey)
 
-    current_sorting = f'{sort}_{direction}'
+    # --- Category filtering ---
+    category_param = request.GET.get("category")
+    if category_param:
+        category_names = category_param.split(",")
+        products = products.filter(category__name__in=category_names)
+        categories = Category.objects.filter(name__in=category_names)
+
+    # --- Special offers ---
+    if request.GET.get("special_offers"):
+        special_offers = True
+        products = products.filter(is_special_offer=True)
+
+    # --- Search ---
+    if "q" in request.GET:
+        query = request.GET.get("q", "").strip()
+        if not query:
+            messages.error(request, "You didn't enter any search criteria!")
+            context = {
+                "products": products,
+                "search_term": "",
+                "current_categories": categories,
+                "special_offers": special_offers,
+                "current_sorting": f"{sort}_{direction}",
+            }
+            return render(request, "products/products.html", context)
+
+        products = products.filter(
+            Q(name__icontains=query) | Q(description__icontains=query)
+        )
 
     context = {
-        'products': products,
-        'search_term': query if 'q' in request.GET else '',
-        'current_categories': categories,
-        'special_offers': special_offers,
-        'current_sorting': current_sorting,
+        "products": products,
+        "search_term": query,
+        "current_categories": categories,
+        "special_offers": special_offers,
+        "current_sorting": f"{sort}_{direction}",
     }
-
-    return render(request, 'products/products.html', context)
+    return render(request, "products/products.html", context)
 
 
 def product_detail(request, product_id):
