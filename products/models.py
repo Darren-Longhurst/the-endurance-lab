@@ -1,4 +1,5 @@
 from django.db import models
+from django.templatetags.static import static
 
 class Category(models.Model):
 
@@ -34,6 +35,20 @@ class Product(models.Model):
         Uses the 'related_name' from ProductVariant to check existence.
         """
         return self.variants.exists()
+
+    @property
+    def display_image_url(self):
+        """
+        Returns the best available image URL:
+        1) uploaded image (Cloudinary)
+        2) image_url field (external URL)
+        3) static placeholder
+        """
+        if self.image:
+            return self.image.url
+        if self.image_url:
+            return self.image_url
+        return static("images/noimage.png")
 
 class ProductVariant(models.Model):
     product = models.ForeignKey(Product, related_name='variants', on_delete=models.CASCADE)
