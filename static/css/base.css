@@ -1,6 +1,6 @@
 /* --- 1. Variables & Base Setup --- */
 :root {
-    --hero-url: url('/media/hero-fell-running.jpg');
+    --hero-url: url('../images/hero-fell-running.jpg');
     --primary-font: 'Bebas Neue', impact, sans-serif;
     --secondary-font: 'Manrope', sans-serif;
     --primary-color: #000000;
@@ -61,7 +61,7 @@ body {
     font-size: 20px;
 }
 
-/* --- 3. Hero Section (The Fix) --- */
+/* --- 3. Hero Section (The Fix) ---*/
 
 .hero {
     height: 100vh;
