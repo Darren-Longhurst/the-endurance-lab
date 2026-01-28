@@ -145,10 +145,9 @@
         </div>
       {% endif %}
 
-    <div class="hero-inner {% if request.path != '/' %}hero-inner--inner{% endif %}">
-    {% block page_header %}{% endblock page_header %}
+    <div class="hero-inner {% block hero_inner_class %}{% endblock %}">
+  {% block page_header %}{% endblock page_header %}
 </div>
-
 
       {% block content %}
       {% endblock content %}
