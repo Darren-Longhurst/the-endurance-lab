@@ -32,7 +32,7 @@ body {
 /* --- 2. Navigation & Layout Spacers --- */
 
 .header-container {
-    padding-top: 100px;
+    padding-top: 0px;
 }
 
 .header-container-home {
@@ -61,21 +61,43 @@ body {
     font-size: 20px;
 }
 
-/* --- 3. Hero Section (The Fix) ---*/
+/* --- 3. Hero Section ---*/
 
-.hero {
-    height: 100vh;
-    min-height: 600px;
-    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), var(--hero-url);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+/* Full-page hero background behind everything */
+.hero-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+    var(--hero-url);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-.hero .container {
-    padding-top: 160px;
-    transition: padding-top 0.3s ease;
+/* non-home pages */
+.hero-bg.hero-overlay {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)),
+    var(--hero-url);
 }
+
+/* Make sure your actual page content is above both layers */
+.site-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Your existing spacing */
+.hero-inner {
+  padding-top: 160px;
+}
+
+.hero-inner--inner {
+    padding-top: 96px;
+}
+
 
 .hero-font {
     font-family: var(--primary-font);
@@ -139,16 +161,6 @@ body {
     background: white;
     color: black !important; /* use important to override link colors for <a> elements */
     border: 1px solid black;
-}
-
-.overlay {
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    position: fixed;
-    background: var(--secondary-color);
-    z-index: -1;
 }
 
 /* Sale Ribbon on Product Cards */
@@ -293,15 +305,6 @@ a.category-badge > span.badge:hover {
     border-radius: 0;
 }
 
-/* -------------------------------- Media Queries */
-
-/* Slightly larger container on xl screens */
-@media (min-width: 1200px) {
-  .container {
-    max-width: 80%;
-  }
-}
-
 /* Allauth form formatting */
 
 .allauth-form-inner-content p {
@@ -359,12 +362,18 @@ a.category-badge > span.badge:hover {
 /* --- 5. Media Queries (Desktop Adjustments) --- */
 
 @media (min-width: 992px) {
-    .header-container {
-        padding-top: 164px;
+    .hero-inner {
+        padding-top: 220px;
     }
 
-    .hero .container {
-        padding-top: 220px;
+    .hero-inner--inner {
+        padding-top: 120px;
+    }
+}
+
+@media (min-width: 992px) {
+    .header-container {
+        padding-top: 40px;
     }
 
     .fixed-top-desktop-only {

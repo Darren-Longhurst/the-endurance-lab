@@ -2,28 +2,24 @@
 {% load static %}
 
 {% block page_header %}
-    <div class="container header-container-home">
-        <div class="row">
-            <div class="col"></div>
-        </div>
+<div class="container header-container-home">
+  <div class="row h-100">
+    <div class="col-7 col-md-6 my-auto text-left">
+      <h1 class="hero-font text-white">
+        <span class="endurance-line">Optimised</span>
+        <span class="optimised-line">Endurance</span>
+      </h1>
+
+      <div class="mt-5">
+        <a href="{{ products_url }}" class="hero-btn btn btn-lg rounded-0 text-uppercase py-3">
+          Shop The Lab
+        </a>
+        <p class="lead mt-3 text-white tag-text">Lab tested fuel for the long haul</p>
+      </div>
     </div>
+  </div>
+</div>
 {% endblock page_header %}
 
 {% block content %}
-<div class="hero">
-<div class="container">
-    <div class="row h-100">
-      <div class="col-7 col-md-6 my-auto text-left">
-        <h1 class="hero-font text-white ">
-    <span class="endurance-line">Optimised</span>
-    <span class="optimised-line">Endurance</span>
-</h1>
-    <div class="mt-5">
-                <a href="{{ products_url }}" class="hero-btn btn btn-lg rounded-0 text-uppercase py-3">Shop The Lab</a>
-        <p class="lead mt-3 text-white tag-text">Lab tested fuel for the long haul</p>
-        </div>
-        </div>
-      </div>
-    </div>
-</div>
 {% endblock content %}
