@@ -96,20 +96,20 @@
               </div>
             </li>
 
-            <li class="list-inline-item">
-              <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-white{% endif %} nav-link" href="{{ view_cart_url }}">
-                <div class="text-center">
-                  <div><i class="fas fa-shopping-cart fa-lg"></i></div>
-                  <p class="my-0">
-                    {% if grand_total %}
-                      £{{ grand_total|floatformat:2 }}
-                    {% else %}
-                      £0.00
-                    {% endif %}
-                  </p>
-                </div>
-              </a>
-            </li>
+           <li class="list-inline-item">
+  <a class="nav-link text-white" href="{{ view_cart_url }}">
+    <div class="text-center">
+      <div><i class="fas fa-shopping-cart fa-lg"></i></div>
+      <p class="my-0">
+        {% if grand_total %}
+          £{{ grand_total|floatformat:2 }}
+        {% else %}
+          £0.00
+        {% endif %}
+      </p>
+    </div>
+  </a>
+</li>
           </ul>
         </div>
       </div>
@@ -121,9 +121,6 @@
         </nav>
       </div>
     </header>
-
-    <!-- Full-page hero background behind content -->
-    <div class="hero-bg {% if request.path != '/' %}hero-overlay{% endif %}"></div>
 
     <main class="site-content">
 
@@ -145,9 +142,10 @@
         </div>
       {% endif %}
 
-    <div class="hero-inner {% block hero_inner_class %}{% endblock %}">
+<div class="{% block hero_inner_class %}hero-inner{% endblock %}">
   {% block page_header %}{% endblock page_header %}
 </div>
+
 
       {% block content %}
       {% endblock content %}
@@ -159,6 +157,55 @@
         $('.toast').toast('show');
       </script>
     {% endblock postloadjs %}
+    <body class="{% if request.path == '/' %}is-home{% endif %}">
 
+       <!-- Footer -->
+        <footer class="container my-5 py-5 border-top">
+    <div class="row align-items-center">
+        <div class="col-lg-5">
+            <h2 class="text-uppercase mb-4" style="font-family: var(--primary-font); font-size: clamp(3rem, 6vw, 4.5rem); line-height: 0.9;">
+                Science Behind <br><span class="text-danger">The Sweat</span>
+            </h2>
+        </div>
+
+        <div class="col-lg-7">
+            <p class="lead fw-bold mb-3">Precision fuel for the 1%.</p>
+            <p class="text-muted" style="font-size: 1.1rem; line-height: 1.8;">
+                The Endurance Lab isn't just a shop; it’s a performance collective. We specialise in elite-tier nutrition designed for the high-intensity demands of <strong>endurance</strong> sports.
+            </p>
+            <p class="text-muted" style="font-size: 1.1rem; line-height: 1.8;">
+                Every product we carry has been vetted for glycemic efficiency and electrolyte bioavailability. Whether you're attacking a Cycling adventure or crushing a local segment, we provide the laboratory-grade fuel required to reach the finish line.
+            </p>
+
+            <div class="mt-4 p-3 border-start border-danger bg-light">
+                <small class="text-uppercase fw-bold text-secondary">Student Project Notice:</small><br>
+                <small class="text-muted">This site is an educational portfolio piece. All products and "lab testing" claims are part of a conceptual branding exercise.</small>
+            </div>
+            <a href="https://github.com/Darren-Longhurst?tab=repositories"
+   target="_blank"
+   rel="noopener noreferrer"
+   class="btn btn-outline-dark btn-sm github-btn mt-3 mb-2">
+   <i class="fa-brands fa-github"></i> Visit my GitHub Library
+</a>
+                    <p class="mb-0">Follow us:
+                    <a href="https://www.facebook.com" target="_blank" rel="noopener"
+   class="text-dark text-decoration-none ms-3" aria-label="Facebook">
+    <i class="fab fa-facebook-square"></i>
+</a>
+
+<a href="https://www.instagram.com" target="_blank" rel="noopener"
+   class="text-dark text-decoration-none ms-3" aria-label="Instagram">
+    <i class="fab fa-instagram-square"></i>
+</a>
+
+<a href="https://www.linkedin.com" target="_blank" rel="noopener"
+   class="text-dark text-decoration-none ms-3" aria-label="LinkedIn">
+    <i class="fab fa-linkedin"></i>
+</a>
+                </p>
+            </div>
+        </div>
+    </div>
+  </footer>
   </body>
 </html>

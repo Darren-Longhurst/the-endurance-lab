@@ -1,25 +1,108 @@
 {% extends "base.html" %}
-{% load static %}
-
 {% block page_header %}
-<div class="container header-container-home">
-  <div class="row h-100">
-    <div class="col-7 col-md-6 my-auto text-left">
-      <h1 class="hero-font text-white">
+{% block hero_inner_class %}hero-inner--home{% endblock %}
+<section class="hero-section">
+  <div class="hero-boxed">
+    <div class="hero-content">
+      <h1 class="hero-font text-white mb-0">
         <span class="endurance-line">Optimised</span>
         <span class="optimised-line">Endurance</span>
       </h1>
 
-      <div class="mt-5">
+      <div class="mt-4">
         <a href="{{ products_url }}" class="hero-btn btn btn-lg rounded-0 text-uppercase py-3">
           Shop The Lab
         </a>
-        <p class="lead mt-3 text-white tag-text">Lab tested fuel for the long haul</p>
+        <p class="lead mt-3 text-white tag-text mb-0">Lab tested fuel for the long haul</p>
       </div>
     </div>
   </div>
+</section>
+
+
+  <!--Divider-->
+
+<div class="container marketing">
+<h1 class="text-uppercase text-center text-dark mt-4">Products By Category</h1>
+    <section class="row">
+      <div class="col-lg-4 text-center">
+  <div class="rounded-circle bg-dark d-flex align-items-center justify-content-center mx-auto" style="width: 140px; height: 140px;">
+    <i class="fa-solid fa-battery-quarter fa-4x text-success"></i>
+  </div>
+  <h1 class="fw-normal mt-3">Energy</h1>
+  <p class="text-dark text">Sustained Release (No sugar spikes or crashes)</p>
+  <p><a class="btn btn-custom mt-3" href="{% url 'products' %}?category=energy">View details &raquo;</a></p>
 </div>
+      <div class="col-lg-4 text-center">
+  <div class="rounded-circle bg-dark d-flex align-items-center justify-content-center mx-auto" style="width: 140px; height: 140px;">
+    <i class="fa-solid fa-droplet fa-4x text-primary"></i>
+  </div>
+
+  <h1 class="fw-normal mt-3">Hydration</h1>
+  <p class="text-dark text">Precision Electrolytes (Targeted sodium/potassium ratios)</p>
+  <p><a class="btn btn-custom mt-3" href="{% url 'products' %}?category=hydration">View details</a></p>
+</div>
+      <div class="col-lg-4 text-center">
+  <div class="rounded-circle bg-dark d-flex align-items-center justify-content-center mx-auto" style="width: 140px; height: 140px;">
+    <i class="fa-solid fa-heart-pulse fa-4x text-danger"></i>
+  </div>
+
+  <h1 class="fw-normal mt-3">Recovery</h1>
+  <p class="text-dark text">Total Synthesis (Full-spectrum muscle repair)</p>
+  <p><a class="btn btn-custom mt-3" href="{% url 'products' %}?category=recovery">View details &raquo;</a></p>
+</div>
+    </section><!-- /.row -->
+</section>
 {% endblock page_header %}
 
 {% block content %}
+
+{% if latest_products %}
+<section class="latest-banner">
+  <div class="latest-banner__overlay"></div>
+
+  <div class="container latest-banner__content">
+    <div class="row align-items-center">
+
+      <!-- Left: banner text -->
+      <div class="col-12 col-lg-5 mb-4 mb-lg-0">
+        <h1 class="text-white text-uppercase mb-3">New In The Lab</h1>
+        <p class="text-white mb-4">
+          Fresh drops, tested for the long haul. Check out our latest products.
+        </p>
+        <a href="{{ products_url }}" class="btn hero-btn btn-lg rounded-0 text-uppercase py-3">
+          Shop New
+        </a>
+      </div>
+
+      <!-- Right: products -->
+      <div class="col-12 col-lg-7">
+        <div class="row">
+          {% for product in latest_products|slice:":3" %}
+            <div class="col-12 col-md-4 mb-3">
+              <div class="card h-100 latest-banner__card border-0">
+                <a href="{% url 'product_detail' product.id %}" class="d-block">
+                  <img src="{{ product.display_image_url }}"
+                       class="card-img-top"
+                       alt="{{ product.name }}">
+                </a>
+                <div class="card-body text-center">
+                  <h6 class="mb-2">{{ product.name }}</h6>
+                  <p class="font-weight-bold mb-3">£{{ product.price }}</p>
+                  <a href="{% url 'product_detail' product.id %}" class="btn btn-custom btn-sm">
+                    View
+                  </a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endif %}
+
+
 {% endblock content %}
