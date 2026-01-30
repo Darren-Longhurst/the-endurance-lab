@@ -21,8 +21,12 @@ h1 { font-family: var(--primary-font); }
 h2 { font-family: var(--secondary-font); }
 
 .text-shrink {
-    /* Minimum 0.9rem, scales with screen, Maximum 1.5rem */
     font-size: clamp(0.3rem, 2.5vw, 0.8rem);
+}
+
+/* Applies padding to the content area only */
+.site-content {
+    margin-top: 96px;
 }
 
 /* --- 2. Navigation & Global Elements --- */
@@ -57,7 +61,7 @@ h2 { font-family: var(--secondary-font); }
     background-size: cover;
     background-position: center;
     display: flex;
-    align-items: center; /* Vertically centered */
+    align-items: center;
     justify-content: flex-start;
     overflow: hidden;
 }
@@ -90,39 +94,6 @@ h2 { font-family: var(--secondary-font); }
 .endurance-line { font-weight: 900; }
 .optimised-line { font-weight: 400; }
 
-/* --- 4. Responsive Adjustments (Mobile Focus) --- */
-@media (max-width: 991px) {
-    .hero-inner { padding-top: 0 !important; }
-    .hero-boxed {
-        min-height: 50vh;
-        padding: 20px;
-    }
-    .hero-content { padding: 0; }
-    .tag-text { white-space: normal; font-size: 1.1rem; }
-    .allauth-page { padding-top: 24px; padding-bottom: 48px; }
-}
-
-@media (max-width: 576px) {
-    .btn-custom, .hero-btn {
-        max-width: 100%; /* Let it fill the width on very small phones */
-        font-size: 1.2rem;
-    }
-}
-
-/* --- 5. Responsive Adjustments (Desktop Focus) --- */
-@media (min-width: 992px) {
-    .hero-inner { padding-top: var(--header-offset-desktop); }
-    .hero-content { padding: 36px 40px 44px; }
-    .header-container { padding-top: 60px; }
-    .message-container { top: 220px; }
-    .container { max-width: 80%; }
-
-    .fixed-top-desktop-only {
-        position: fixed;
-        top: 0; right: 0; left: 0;
-        z-index: 1030;
-    }
-}
 
 /* --- 6. UI Components (Buttons/Cards) --- */
 .btn-custom, .hero-btn {
@@ -153,7 +124,7 @@ h2 { font-family: var(--secondary-font); }
 .btn-custom i {
     font-size: 1rem;
     position:relative;
-    top: -2px; /* Moves the icon up 1 pixel to visually balance it */
+    top: -2px;
 }
 
 /* Sale Ribbon on Product Cards */
@@ -205,4 +176,45 @@ h2 { font-family: var(--secondary-font); }
 .header-nav .nav-link.text-white {
     color: #ffffff !important;
     font-weight: 400;
+}
+
+
+/* Media Queries*/
+
+@media (min-width: 992px) {
+    .site-content {
+        margin-top: 96px;
+    }
+}
+
+@media (max-width: 991px) {
+    .hero-inner { padding-top: 0 !important; }
+    .hero-boxed {
+        min-height: 50vh;
+        padding: 20px;
+    }
+    .hero-content { padding: 0; }
+    .tag-text { white-space: normal; font-size: 1.1rem; }
+    .allauth-page { padding-top: 24px; padding-bottom: 48px; }
+}
+
+@media (max-width: 576px) {
+    .btn-custom, .hero-btn {
+        max-width: 100%;
+        font-size: 1.2rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .hero-inner { padding-top: var(--header-offset-desktop); }
+    .hero-content { padding: 36px 40px 44px; }
+    .header-container { padding-top: 60px; }
+    .message-container { top: 220px; }
+    .container { max-width: 80%; }
+
+    .fixed-top-desktop-only {
+        position: fixed;
+        top: 0; right: 0; left: 0;
+        z-index: 1030;
+    }
 }

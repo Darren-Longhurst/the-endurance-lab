@@ -62,21 +62,19 @@
 
         <!-- Cart -->
         <li class="list-inline-item">
-           <a class="nav-link {% if total > 0 and free_delivery_delta == 0 %}text-success-optimized{% else %}text-white{% endif %}">
-            </a>
-               nav-link d-block" href="{{ view_cart_url }}">
-                <div class="text-center">
-                    <div><i class="fas fa-shopping-bag fa-lg"></i></div>
-                    <p class="my-0">
-                        {% if grand_total %}
-                            £{{ grand_total|floatformat:2 }}
-                        {% else %}
-                            £0.00
-                        {% endif %}
-                    </p>
-                </div>
-            </a>
-        </li>
+    <a class="nav-link d-block {% if total > 0 and free_delivery_delta == 0 %}text-success-optimized{% else %}text-white{% endif %}" href="{{ view_cart_url }}">
+        <div class="text-center">
+            <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+            <p class="my-0">
+                {% if grand_total %}
+                    £{{ grand_total|floatformat:2 }}
+                {% else %}
+                    £0.00
+                {% endif %}
+            </p>
+        </div>
+    </a>
+</li>
 
     </ul>
 </div>
