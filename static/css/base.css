@@ -108,6 +108,27 @@ h2 { font-family: var(--secondary-font); }
     border-radius: 0;
 }
 
+/* Custom Lab Category Badges */
+.badge-lab-tag {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #000000;
+    border-radius: 0;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    font-size: 0.8rem;
+    transition: all 0.2s ease-in-out;
+    display: inline-flex;
+    align-items: center;
+}
+
+.badge-lab-tag:hover {
+    background-color: #000000;
+    color: #ffffff;
+    text-decoration: none;
+}
+
 .btn-custom {
     border: 1.0px solid var(--primary-color);
     color: var(--primary-color);

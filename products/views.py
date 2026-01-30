@@ -12,6 +12,7 @@ def all_products(request):
     """Show all products, including sorting, category filtering, special offers and search."""
 
     products = Product.objects.all()
+    all_categories = Category.objects.all()  # <--- NEW: Always fetch all categories for the badges
 
     # Defaults
     query = ""
@@ -24,10 +25,8 @@ def all_products(request):
     sort = request.GET.get("sort")
     direction = request.GET.get("direction")
 
-    sortkey = None
     if sort:
         sortkey = sort
-
         if sort == "name":
             products = products.annotate(lower_name=Lower("name"))
             sortkey = "lower_name"
@@ -56,14 +55,7 @@ def all_products(request):
         query = request.GET.get("q", "").strip()
         if not query:
             messages.error(request, "You didn't enter any search criteria!")
-            context = {
-                "products": products,
-                "search_term": "",
-                "current_categories": categories,
-                "special_offers": special_offers,
-                "current_sorting": f"{sort}_{direction}",
-            }
-            return render(request, "products/products.html", context)
+            return redirect(reverse('products')) # Simpler redirect back to all products
 
         products = products.filter(
             Q(name__icontains=query) | Q(description__icontains=query)
@@ -73,6 +65,7 @@ def all_products(request):
         "products": products,
         "search_term": query,
         "current_categories": categories,
+        "all_categories": all_categories,  # <--- NEW: Pass to template
         "special_offers": special_offers,
         "current_sorting": f"{sort}_{direction}",
     }
