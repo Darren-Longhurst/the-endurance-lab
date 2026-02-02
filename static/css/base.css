@@ -24,7 +24,6 @@ h2 { font-family: var(--secondary-font); }
     font-size: clamp(0.3rem, 2.5vw, 0.8rem);
 }
 
-/* Applies padding to the content area only */
 .site-content {
     margin-top: 96px;
 }
@@ -200,6 +199,8 @@ h2 { font-family: var(--secondary-font); }
 .btn-custom {
     border: 1.0px solid var(--primary-color);
     color: var(--primary-color);
+    /* IOS conflict overlay correction */
+    -webkit-tap-highlight-color: transparent;
 }
 
 .hero-btn {
