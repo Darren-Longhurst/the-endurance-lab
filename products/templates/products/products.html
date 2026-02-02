@@ -27,7 +27,7 @@
                     {% if c.name.lower == 'energy' or c.name.lower == 'hydration' or c.name.lower == 'recovery' or c.name.lower == 'supplements' or c.name.lower == 'merchandise' %}
                         <a class="category-badge text-decoration-none"
                         href="{{ products_url }}?category={% if c.name.lower == 'energy' %}energy,energy_gels,energy_powder,energy_bars,energy_drinks{% elif c.name.lower == 'hydration' %}hydration,electrolyte_powders,hydration_tabs,bottles{% elif c.name.lower == 'recovery' %}recovery,shakers,recovery_powder{% elif c.name.lower == 'supplements' %}supplements,multi_vitamin,omega_3,biotin_complex{% elif c.name.lower == 'merchandise' %}merchandise,t_shirts,beanies,caps{% else %}{{ c.name }}{% endif %}">
-                            <span class="badge badge-lab-tag p-2 px-3 m-1 text-uppercase bg-dark text-white border-dark">
+                            <span class="badge badge-lab-tag p-2 px-3 m-1 text-uppercase">
                                 <i class="fas fa-tag fa-sm mr-1"></i> {{ c.friendly_name }}
                             </span>
                         </a>
@@ -38,7 +38,7 @@
                     {% if c.name.lower == 'energy' or c.name.lower == 'hydration' or c.name.lower == 'recovery' or c.name.lower == 'supplements' or c.name.lower == 'merchandise' %}
                         <a class="category-badge text-decoration-none"
                         href="{{ products_url }}?category={% if c.name.lower == 'energy' %}energy,energy_gels,energy_powder,energy_bars,energy_drinks{% elif c.name.lower == 'hydration' %}hydration,electrolyte_powders,hydration_tabs,bottles{% elif c.name.lower == 'recovery' %}recovery,shakers,recovery_powder{% elif c.name.lower == 'supplements' %}supplements,multi_vitamin,omega_3,biotin_complex{% elif c.name.lower == 'merchandise' %}merchandise,t_shirts,beanies,caps{% else %}{{ c.name }}{% endif %}">
-                            <span class="badge badge-lab-tag p-2 px-3 m-1 text-uppercase border-dark text-dark">
+                            <span class="badge badge-lab-tag p-2 px-3 m-1 text-uppercase">
                                 <i class="fas fa-tag fa-sm mr-1"></i> {{ c.friendly_name }}
                             </span>
                         </a>
@@ -48,7 +48,7 @@
 
             {% if current_categories or search_term or special_offers %}
                 <a href="{{ products_url }}" class="category-badge text-decoration-none">
-                    <span class="badge badge-lab-tag p-2 px-3 m-1 text-uppercase border-danger text-danger">
+                    <span class="badge badge-lab-tag-checkout p-2 px-3 m-1 text-uppercase">
                         Clear Filters <i class="fas fa-times fa-sm ml-1"></i>
                     </span>
                 </a>

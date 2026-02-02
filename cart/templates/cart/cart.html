@@ -103,12 +103,12 @@
                     </div>
 
                 {% else %}
-                    <p class="lead mb-5">Your Cart is currently empty.</p>
+                    <p class="lead mb-5">Your cart is currently empty.</p>
                     <a href="{{ products_url }}" class="btn btn-outline-black rounded-0 btn-lg">
                         <span class="icon">
                             <i class="fas fa-chevron-left"></i>
                         </span>
-                        <span class="text-uppercase">Continue Shopping</span>
+                        <span class="text-uppercase btn-custom">Continue Shopping</span>
                     </a>
                 {% endif %}
             </div>
@@ -133,7 +133,7 @@
     })
 
    // Remove item and reload on click
-    $('.remove-item').click(function(e) {
+$('.remove-item').click(function(e) {
     var csrfToken = "{{ csrf_token }}";
     // This will now capture the full key (e.g., '1_5') from the ID
     var itemId = $(this).attr('id').split('remove_')[1];

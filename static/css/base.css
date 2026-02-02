@@ -5,7 +5,7 @@
     --secondary-font: 'Manrope', sans-serif;
     --primary-color: #212529;
     --secondary-color: #ffffff;
-    --highlight-color: #f60404;
+    --highlight-color: #dc3545;
     --header-offset-mobile: 60px;
     --header-offset-desktop: 50px;
 }
@@ -138,9 +138,9 @@ h2 { font-family: var(--secondary-font); }
 
 /* Custom Lab Category Badges */
 .badge-lab-tag {
-    background-color: #ffffff;
-    color: #000000;
-    border: 1px solid #000000;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
     border-radius: 0;
     font-family: 'Manrope', sans-serif;
     font-weight: 600;
@@ -152,15 +152,34 @@ h2 { font-family: var(--secondary-font); }
 }
 
 .badge-lab-tag:hover {
-    background-color: #000000;
-    color: #ffffff;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
     text-decoration: none;
 }
 
+.badge-lab-tag-checkout {
+    background-color: var(--secondary-color);
+    color: var(--highlight-color);
+    border: 1px solid var(--highlight-color);
+    border-radius: 0;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    font-size: 0.8rem;
+    transition: all 0.2s ease-in-out;
+    display: inline-flex;
+    align-items: center;
+}
+
+.badge-lab-tag-checkout:hover {
+    background-color: var(--highlight-color);
+    color: var(--secondary-color);
+    text-decoration: none;
+}
 .allauth-button  {
-        background-color: #ffffff;
-    color: #000000;
-    border: 1px solid #000000;
+        background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
     border-radius: 0;
     font-family: 'Manrope', sans-serif;
     font-weight: 600;
@@ -172,8 +191,8 @@ h2 { font-family: var(--secondary-font); }
 }
 
 .allauth-button:hover {
-    background-color: #000000;
-    color: #ffffff;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
     text-decoration: none;
 }
 
@@ -244,7 +263,7 @@ h2 { font-family: var(--secondary-font); }
 
 /* Ensure white stays white*/
 .header-nav .nav-link.text-white {
-    color: #ffffff !important;
+    color: var(--secondary-color) !important;
     font-weight: 400;
 }
 
