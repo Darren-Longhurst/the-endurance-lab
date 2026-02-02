@@ -45,7 +45,7 @@
     <title>The Endurance Lab {% block extra_title %}{% endblock extra_title %}</title>
   </head>
 
-  <body>
+  <body class="{% if request.path == '/' %}is-home{% endif %}">
 
     <header class="header-nav container-fluid fixed-top">
     <div id="delivery-banner" class="row text-center">
@@ -153,7 +153,6 @@
         $('.toast').toast('show');
       </script>
     {% endblock postloadjs %}
-    <body class="{% if request.path == '/' %}is-home{% endif %}">
 
        <!-- Footer -->
         <footer class="container my-5 py-5 border-top">
