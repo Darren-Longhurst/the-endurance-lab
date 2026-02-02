@@ -309,16 +309,37 @@ h2 { font-family: var(--secondary-font); }
 
 /* Touch Screen Specific Styling */
 
-@media (max-width: 991px) {
-    .btn-custom {
-        -webkit-tap-highlight-color: transparent;
-        -webkit-appearance: none;
-    }
+.btn-custom, .hero-btn, .btn-custom-newsletter {
+    -webkit-tap-highlight-color: transparent !important;
 }
+
+/* Desktop ONLY Hover (Prevents 'Sticky' buttons on iOS) */
 @media (hover: hover) {
     .btn-custom:hover {
         background-color: var(--primary-color);
-        color: #fff;
+        color: var(--secondary-color);
         text-decoration: none;
+    }
+    .hero-btn:hover {
+        background: var(--secondary-color);
+        color: var(--primary-color);
+    }
+    .btn-custom-newsletter:hover {
+        background: var(--secondary-color);
+        color: var(--primary-color);
+    }
+}
+
+/* Mobile/Touch ONLY Tweaks */
+@media (pointer: coarse) {
+    .btn-custom, .hero-btn {
+        -webkit-appearance: none;
+        outline: none;
+    }
+
+    /* Forces the button to stay transparent/original color when touched */
+    .btn-custom:active {
+        background-color: transparent !important;
+        color: var(--primary-color) !important;
     }
 }
