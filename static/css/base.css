@@ -199,7 +199,6 @@ h2 { font-family: var(--secondary-font); }
 .btn-custom {
     border: 1.0px solid var(--primary-color);
     color: var(--primary-color);
-    touch-action: manipulation;
 }
 
 .hero-btn {
@@ -306,60 +305,4 @@ h2 { font-family: var(--secondary-font); }
         top: 0; right: 0; left: 0;
         z-index: 1030;
     }
-}
-
-/* Touch Screen Specific Styling */
-
-.btn-custom, .hero-btn, .btn-custom-newsletter {
-    -webkit-tap-highlight-color: transparent !important;
-}
-
-/* Desktop ONLY Hover (Prevents 'Sticky' buttons on iOS) */
-@media (hover: hover) {
-    .btn-custom:hover {
-        background-color: var(--primary-color);
-        color: var(--secondary-color);
-        text-decoration: none;
-    }
-    .hero-btn:hover {
-        background: var(--secondary-color);
-        color: var(--primary-color);
-    }
-    .btn-custom-newsletter:hover {
-        background: var(--secondary-color);
-        color: var(--primary-color);
-    }
-}
-
-/* Mobile/Touch ONLY Tweaks */
-
-@media (pointer: coarse) {
-    .btn-custom, .hero-btn {
-        -webkit-appearance: none;
-        outline: none;
-    }
-
-    /* Forces the button to stay transparent/original color when touched */
-    .btn-custom:active {
-        background-color: transparent !important;
-        color: var(--primary-color) !important;
-    }
-}
-
-/* Specific fix for Mobile Chrome & Chromium browsers */
-.btn-custom:focus,
-.btn-custom:active,
-.btn-custom-newsletter:focus,
-.btn-custom-newsletter:active,
-.btn-outline-dark:focus {
-    outline: none !important;
-    box-shadow: none !important;
-    background-color: transparent !important;
-    color: var(--primary-color) !important;
-}
-
-/* This targets the 'moment of impact' in Chrome */
-.btn-custom:active {
-    background-color: var(--primary-color) !important;
-    color: var(--secondary-color) !important;
 }
