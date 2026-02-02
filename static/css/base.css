@@ -201,6 +201,9 @@ h2 { font-family: var(--secondary-font); }
     color: var(--primary-color);
     /* IOS conflict overlay correction */
     -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-appearance: none;
+    appearance: none;
 }
 
 .hero-btn {
@@ -208,7 +211,8 @@ h2 { font-family: var(--secondary-font); }
     color: var(--secondary-color);
 }
 
-.btn-custom:hover { background: var(--primary-color); color: var(--secondary-color); }
+.btn-custom:hover { background: var(--primary-color); color: var(--secondary-color); background-color: transparent !important;
+    -webkit-tap-highlight-color: transparent !important;  }
 .hero-btn:hover { background: var(--secondary-color); color: var(--primary-color); }
 
 .btn-custom i {
