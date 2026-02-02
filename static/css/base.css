@@ -199,6 +199,7 @@ h2 { font-family: var(--secondary-font); }
 .btn-custom {
     border: 1.0px solid var(--primary-color);
     color: var(--primary-color);
+    touch-action: manipulation;
 }
 
 .hero-btn {
