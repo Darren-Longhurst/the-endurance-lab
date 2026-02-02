@@ -12,7 +12,7 @@ def all_products(request):
     """Show all products, including sorting, category filtering, special offers and search."""
 
     products = Product.objects.all()
-    all_categories = Category.objects.all()  # <--- NEW: Always fetch all categories for the badges
+    all_categories = Category.objects.all()
 
     # Defaults
     query = ""
@@ -55,8 +55,7 @@ def all_products(request):
         query = request.GET.get("q", "").strip()
         if not query:
             messages.error(request, "You didn't enter any search criteria!")
-            return redirect(reverse('products')) # Simpler redirect back to all products
-
+            return redirect(reverse('products'))
         products = products.filter(
             Q(name__icontains=query) | Q(description__icontains=query)
         )
@@ -65,7 +64,7 @@ def all_products(request):
         "products": products,
         "search_term": query,
         "current_categories": categories,
-        "all_categories": all_categories,  # <--- NEW: Pass to template
+        "all_categories": all_categories,
         "special_offers": special_offers,
         "current_sorting": f"{sort}_{direction}",
     }
@@ -148,3 +147,12 @@ def delete_product(request, product_id):
     product.delete()
     messages.success(request, 'Product deleted!')
     return redirect(reverse('products'))
+
+def top_rated_products(request):
+    """ A view to show the highest rated products """
+    products = Product.objects.filter(rating__isnull=False).order_by('-rating')
+    context = {
+        'products': products,
+        'title': 'Top Rated',
+    }
+    return render(request, 'products/products.html', context)

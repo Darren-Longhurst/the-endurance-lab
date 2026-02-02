@@ -42,8 +42,8 @@
                             {% include "cart/product-info.html" %}
                         </div>
                         <div class="col-12 col-sm-6 order-sm-last">
-                            <p class="my-0">Price Each: £{{ item.product.price }}</p>
-                            <p><strong>Subtotal:</strong> £{{ item.lineitem_total|floatformat:2 }}</p>
+                            <p class="my-0">Price Each: £{{ item.current_price|floatformat:2 }}</p>
+                             <p><strong>Subtotal:</strong> £{{ item.lineitem_total|floatformat:2 }}</p>
                         </div>
                         <div class="col-12 col-sm-6">
                             {% include "cart/quantity-form.html" %}
@@ -78,7 +78,7 @@
                                         {% include "cart/product-info.html" %}
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0">£{{ item.product.price }}</p>
+                                        <p class="my-0">£{{ item.current_price|floatformat:2 }}</p>
                                     </td>
                                     <td class="py-3 w-25">
                                         {% include "cart/quantity-form.html" %}
@@ -132,18 +132,19 @@
         form.submit();
     })
 
-    // Remove item and reload on click
+   // Remove item and reload on click
     $('.remove-item').click(function(e) {
-        var csrfToken = "{{ csrf_token }}";
-        var itemId = $(this).attr('id').split('remove_')[1];
-        var size = $(this).data('size');
-        var url = `/cart/remove/${itemId}/`;
-        var data = {'csrfmiddlewaretoken': csrfToken, 'size': size};
-        $.post(url, data)
-         .done(function() {
-             location.reload();
-         });
-    })
+    var csrfToken = "{{ csrf_token }}";
+    // This will now capture the full key (e.g., '1_5') from the ID
+    var itemId = $(this).attr('id').split('remove_')[1];
+    var url = `/cart/remove/${itemId}/`;
+    var data = {'csrfmiddlewaretoken': csrfToken};
+
+    $.post(url, data)
+     .done(function() {
+         location.reload();
+     });
+})
 </script>
 {% endblock %}
 

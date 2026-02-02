@@ -4,7 +4,7 @@
     "pk": 1,
     "fields": {
       "product": 1,
-      "variant_type": "Flavor",
+      "variant_type": "Flavour",
       "variant_value": "Summer Berry",
       "price_modifier": "0.00",
       "stock_count": 100
@@ -15,7 +15,7 @@
     "pk": 2,
     "fields": {
       "product": 1,
-      "variant_type": "Flavor",
+      "variant_type": "Flavour",
       "variant_value": "Zesty Citrus",
       "price_modifier": "0.00",
       "stock_count": 100
@@ -37,7 +37,7 @@
     "pk": 4,
     "fields": {
       "product": 5,
-      "variant_type": "Flavor",
+      "variant_type": "Flavour",
       "variant_value": "Lemon & Lime",
       "price_modifier": "0.00",
       "stock_count": 150
@@ -48,7 +48,7 @@
     "pk": 5,
     "fields": {
       "product": 5,
-      "variant_type": "Flavor",
+      "variant_type": "Flavour",
       "variant_value": "Tropical Juice",
       "price_modifier": "0.00",
       "stock_count": 150
@@ -81,7 +81,7 @@
     "pk": 8,
     "fields": {
       "product": 7,
-      "variant_type": "Flavor",
+      "variant_type": "Flavour",
       "variant_value": "Swiss Chocolate",
       "price_modifier": "0.00",
       "stock_count": 60
@@ -92,7 +92,7 @@
     "pk": 9,
     "fields": {
       "product": 7,
-      "variant_type": "Flavor",
+      "variant_type": "Flavour",
       "variant_value": "Smooth Vanilla",
       "price_modifier": "0.00",
       "stock_count": 60
@@ -136,7 +136,7 @@
     "pk": 13,
     "fields": {
       "product": 15,
-      "variant_type": "Flavor",
+      "variant_type": "Flavour",
       "variant_value": "Summer Berry",
       "price_modifier": "0.00",
       "stock_count": 100
@@ -147,7 +147,7 @@
     "pk": 14,
     "fields": {
       "product": 15,
-      "variant_type": "Flavor",
+      "variant_type": "Flavour",
       "variant_value": "Zesty Citrus",
       "price_modifier": "0.00",
       "stock_count": 100

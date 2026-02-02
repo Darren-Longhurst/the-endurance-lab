@@ -1,5 +1,6 @@
 from django.db import models
 from django.templatetags.static import static
+from django.shortcuts import render
 
 class Category(models.Model):
 

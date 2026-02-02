@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.conf import settings
 from .forms import OrderForm
 from .models import Order, OrderLineItem
-from products.models import Product
+from products.models import Product, ProductVariant
 from profiles.forms import UserProfileForm
 from profiles.models import UserProfile
 from cart.contexts import cart_contents
@@ -34,7 +34,6 @@ def checkout(request):
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
     if request.method == 'POST':
-
         cart = request.session.get('cart', {})
 
         form_data = {
@@ -56,40 +55,43 @@ def checkout(request):
             order.stripe_pid = pid
             order.original_cart = json.dumps(cart)
             order.save()
-            for item_id, item_data in cart.items():
+
+            for item_key, quantity in cart.items():
                 try:
-                    product = Product.objects.get(id=item_id)
-                    if isinstance(item_data, int):
-                        order_line_item = OrderLineItem(
-                            order=order,
-                            product=product,
-                            quantity=item_data,
-                        )
-                        order_line_item.save()
+                    if "_" in str(item_key):
+                        product_id, variant_id = item_key.split('_')
+                        product = Product.objects.get(pk=product_id)
+                        variant = ProductVariant.objects.get(pk=variant_id)
+
+                        # CALCULATION: Base Price + Modifier (e.g., £2.50 + £17.50)
+                        price = product.price + variant.price_modifier
+                        variant_display = variant.variant_value
                     else:
-                        for size, quantity in item_data['items_by_size'].items():
-                            order_line_item = OrderLineItem(
-                                order=order,
-                                product=product,
-                                quantity=quantity,
-                                product_size=size,
-                            )
-                            order_line_item.save()
-                except Product.DoesNotExist:
-                    messages.error(request, (
-                        "One of the products in your cart wasn't found. "
-                        "Please call us for assistance!")
+                        product = Product.objects.get(pk=item_key)
+                        price = product.price
+                        variant_display = None
+
+                    order_line_item = OrderLineItem(
+                        order=order,
+                        product=product,
+                        quantity=quantity,
+                        product_variant=variant_display,
                     )
+
+                    order_line_item.lineitem_total = price * quantity
+                    order_line_item.save()
+
+                except (Product.DoesNotExist, ProductVariant.DoesNotExist):
+                    messages.error(request, "One of the products in your cart wasn't found.")
                     order.delete()
                     return redirect(reverse('view_cart'))
 
             request.session['save_info'] = 'save-info' in request.POST
             return redirect(reverse('checkout_success', args=[order.order_number]))
         else:
-            messages.error(request, 'There was an error with your form. \
-                Please double check your information.')
+            messages.error(request, 'There was an error with your form. Please double check your info.')
 
-    # --- GET Logic (When the page first loads) ---
+    # --- GET Logic (Correctly Aligned) ---
     else:
         cart = request.session.get('cart', {})
         if not cart:
@@ -100,13 +102,14 @@ def checkout(request):
         total = current_cart['grand_total']
         stripe_total = round(total * 100)
         stripe.api_key = stripe_secret_key
+
         intent = stripe.PaymentIntent.create(
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
             metadata={
-            'cart': json.dumps(request.session.get('cart', {})),
-            'save_info': request.POST.get('save_info'),
-            'username': str(request.user),
+                'cart': json.dumps(cart),
+                'save_info': request.session.get('save_info'),
+                'username': str(request.user),
             }
         )
 
@@ -129,7 +132,6 @@ def checkout(request):
         else:
             order_form = OrderForm()
 
-
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing.')
 
@@ -141,7 +143,6 @@ def checkout(request):
     }
 
     return render(request, template, context)
-
 
 def checkout_success(request, order_number):
     """

@@ -59,18 +59,22 @@
                     </div>
 
                     {% for item in order.lineitems.all %}
-                    <div class="row">
-                        <div class="col-12 col-md-4">
-                            <p class="small mb-0 text-black font-weight-bold">
-                                {{ item.product.name }}
-                                {% if item.product.has_sizes %}
-                                    - Size {{ item.product_size|upper }}
-                                {% endif %}
-                            </p>
-                        </div>
-                        <div class="col-12 col-md-8 text-md-right">
-                            <p class="small mb-0">{{ item.quantity }} @ £{{ item.product.price }} each</p>
-                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-4">
+                                <p class="small mb-0 text-black font-weight-bold">
+                    {{ item.product.name }}
+                    {% if item.product_variant %}
+                        - {{ item.product_variant|title }}
+                    {% endif %}
+
+                    {% if item.product.has_sizes %}
+                        - Size {{ item.product_size|upper }}
+                    {% endif %}
+                </p>
+            </div>
+        <div class="col-12 col-md-8 text-md-right">
+            <p class="small mb-0">{{ item.quantity }} @ £{{ item.unit_price }} each</p>
+                </div>
                     </div>
                     {% endfor %}
 
@@ -200,19 +204,18 @@
         <div class="row">
 			<div class="col-12 col-lg-7 text-right">
                 {% if from_profile %}
-                    <a href="{{ profile_url }}" class="btn btn-black rounded-0 my-2">
+                    <a href="{{ profile_url }}" class="btn btn-custom rounded-0 my-2">
                         <span class="icon mr-2">
                             <i class="fas fa-angle-left"></i>
                         </span>
                         <span class="text-uppercase">Back to Profile</span>
                     </a>
                 {% else %}
-                    <a href="{{ products_url }}?category=new_arrivals,deals,clearance" class="btn btn-black rounded-0 my-2">
-                        <span class="icon mr-2">
-                            <i class="fas fa-gifts"></i>
-                        </span>
-                        <span class="text-uppercase">Now check out the latest deals!</span>
-                    </a>
+                <a class="category-badge text-decoration-none" href="{{ products_url }}?category=energy">
+                    <span class="badge badge-lab-tag p-2 px-3 mt-2 text-uppercase text-danger">
+                        <i class="text-danger fas fa-tag fa-sm mr-1"></i> Check Out Our Energy Products!
+                    </span>
+                </a>
                 {% endif %}
 			</div>
 		</div>

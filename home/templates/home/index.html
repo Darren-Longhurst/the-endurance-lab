@@ -31,7 +31,7 @@
   </div>
   <h1 class="fw-normal mt-3">Energy</h1>
   <p class="text-dark text">Sustained Release (No sugar spikes or crashes)</p>
-  <p><a class="btn btn-custom mt-3" href="{% url 'products' %}?category=energy">View details &raquo;</a></p>
+  <p><a class="btn btn-custom mt-3" href="{{ products_url }}?category=energy">View details</a></p>
 </div>
       <div class="col-lg-4 text-center">
   <div class="rounded-circle bg-dark d-flex align-items-center justify-content-center mx-auto" style="width: 140px; height: 140px;">
@@ -40,7 +40,7 @@
 
   <h1 class="fw-normal mt-3">Hydration</h1>
   <p class="text-dark text">Precision Electrolytes (Targeted sodium/potassium ratios)</p>
-  <p><a class="btn btn-custom mt-3" href="{% url 'products' %}?category=hydration">View details</a></p>
+  <p><a class="btn btn-custom mt-3" href="{{ products_url }}?category=hydration">View details</a></p>
 </div>
       <div class="col-lg-4 text-center">
   <div class="rounded-circle bg-dark d-flex align-items-center justify-content-center mx-auto" style="width: 140px; height: 140px;">
@@ -49,48 +49,47 @@
 
   <h1 class="fw-normal mt-3">Recovery</h1>
   <p class="text-dark text">Total Synthesis (Full-spectrum muscle repair)</p>
-  <p><a class="btn btn-custom mt-3" href="{% url 'products' %}?category=recovery">View details &raquo;</a></p>
+  <p><a class="btn btn-custom mt-3" href="{{ products_url }}?category=recovery">View details</a></p>
 </div>
-    </section><!-- /.row -->
-</section>
+    </section>
 {% endblock page_header %}
 
 {% block content %}
 
-{% if latest_products %}
+<!--Top rated products-->
+
+{% if top_rated_products %}
 <section class="latest-banner">
   <div class="latest-banner__overlay"></div>
-
   <div class="container latest-banner__content">
     <div class="row align-items-center">
 
-      <!-- Left: banner text -->
       <div class="col-12 col-lg-5 mb-4 mb-lg-0">
-        <h1 class="text-white text-uppercase mb-3">New In The Lab</h1>
+        <h1 class="text-white text-uppercase mb-3">Athlete Optimised</h1>
         <p class="text-white mb-4">
-          Fresh drops, tested for the long haul. Check out our latest products.
-        </p>
-        <a href="{{ products_url }}" class="btn hero-btn btn-lg rounded-0 text-uppercase py-3">
-          Shop New
+          The Lab’s definitive gear and fuel and are our community’s highest-rated!
+          Athlete-endorsed products—vetted for ultimate performance and absorbtion, these products are optimised for you. When the going gets tough get stuck into the grind with The Endurance Lab.
+        </p> <a href="{% url 'top_rated' %}" class="btn hero-btn btn-lg rounded-0 text-uppercase py-3">
+          Shop All
         </a>
       </div>
 
-      <!-- Right: products -->
       <div class="col-12 col-lg-7">
         <div class="row">
-          {% for product in latest_products|slice:":3" %}
+          {% for product in top_rated_products %}
             <div class="col-12 col-md-4 mb-3">
               <div class="card h-100 latest-banner__card border-0">
                 <a href="{% url 'product_detail' product.id %}" class="d-block">
-                  <img src="{{ product.display_image_url }}"
-                       class="card-img-top"
-                       alt="{{ product.name }}">
+                  <img src="{{ product.display_image_url }}" class="card-img-top" alt="{{ product.name }}">
                 </a>
                 <div class="card-body text-center">
                   <h6 class="mb-2">{{ product.name }}</h6>
+                  <p class="text-warning mb-1">
+                    <i class="fas fa-star"></i> {{ product.rating }} / 5
+                  </p>
                   <p class="font-weight-bold mb-3">£{{ product.price }}</p>
                   <a href="{% url 'product_detail' product.id %}" class="btn btn-custom btn-sm">
-                    View
+                    View Product
                   </a>
                 </div>
               </div>
@@ -104,5 +103,26 @@
 </section>
 {% endif %}
 
+<!--Newsletter Sign Up-->
+
+<section id="newsletter" class="text-white py-5 my-5">
+    <div class="container-fluid mb-3">
+        <div class="row justify-content-center text-center">
+            <div class="col-12 col-md-8 col-lg-6">
+                <h2 class="mb-3">Sign up to Our Newsletter</h2>
+                <p class="mb-4">
+                    Get all the latest product updates and offers straight to your inbox.
+                </p>
+                  <form action="{{ home_url }}" method="POST" class="d-flex flex-column flex-sm-row justify-content-center">
+                    {% csrf_token %}
+                    {{ newsletter_form.email }}
+                    <button type="submit" class="btn btn-custom-newsletter mt-2 mt-sm-0 ml-sm-2">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 
 {% endblock content %}

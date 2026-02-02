@@ -1,15 +1,28 @@
-from django.shortcuts import render
-from products.models import Product
 
-# Create your views here.
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from products.models import Product
+from .forms import NewsletterForm
 
 def index(request):
-    """
-    A simple view to render the home page.
-    """
-    latest_products = Product.objects.order_by('-id')[:3]
+    """ A view to return the index page, top rated products, and newsletter signup """
+
+    if request.method == 'POST':
+        newsletter_form = NewsletterForm(request.POST)
+        if newsletter_form.is_valid():
+            newsletter_form.save()
+            messages.success(request, 'Successfully subscribed to the Lab!')
+            return redirect('home')
+        else:
+            messages.error(request, 'Failed to subscribe. Please ensure the email is valid.')
+    else:
+        newsletter_form = NewsletterForm()
+
+    top_rated = Product.objects.filter(rating__isnull=False).order_by('-rating', '-id')[:3]
 
     context = {
-        'latest_products': latest_products,
+        'top_rated_products': top_rated,
+        'newsletter_form': newsletter_form,
     }
+
     return render(request, 'home/index.html', context)

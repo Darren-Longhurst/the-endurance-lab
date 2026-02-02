@@ -94,6 +94,34 @@ h2 { font-family: var(--secondary-font); }
 .endurance-line { font-weight: 900; }
 .optimised-line { font-weight: 400; }
 
+/* -- Newsletter Signup --*/
+
+#newsletter {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/static/images/swimming.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.btn-custom-newsletter  {
+    font-family: var(--primary-font);
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+    max-width: 280px;
+    white-space: nowrap;
+    padding: 3px 35px;
+    font-size: clamp(1.1rem, 4vw, 1.5rem);
+    display: inline-block;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    border-radius: 0;
+}
+
+.btn-custom-newsletter:hover {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+
 
 /* --- 6. UI Components (Buttons/Cards) --- */
 .btn-custom, .hero-btn {
@@ -128,6 +156,27 @@ h2 { font-family: var(--secondary-font); }
     color: #ffffff;
     text-decoration: none;
 }
+
+.allauth-button  {
+        background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #000000;
+    border-radius: 0;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    font-size: 0.8rem;
+    transition: all 0.2s ease-in-out;
+    display: inline-flex;
+    align-items: center;
+}
+
+.allauth-button:hover {
+    background-color: #000000;
+    color: #ffffff;
+    text-decoration: none;
+}
+
 
 .btn-custom {
     border: 1.0px solid var(--primary-color);

@@ -1,24 +1,27 @@
 {% extends "account/base.html" %}
-
 {% load i18n %}
-
-{% block head_title %}{% trans "Signup" %}{% endblock %}
+{% load crispy_forms_tags %} {% block head_title %}{% trans "Signup" %}{% endblock %}
 
 {% block inner_content %}
 <hr>
-<h2 class="logo-font mb-4">{% trans "Sign Up" %}</h2>
+<h2 class="text-uppercase fw-bold" style="font-family: var(--primary-font);">
+    {% trans "Sign Up" %}
+</h2>
 <hr>
 
-<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}" class="text-danger">sign in</a>.{% endblocktrans %}</p>
 
 <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
   {% csrf_token %}
   {{ form|crispy }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <a class="btn btn-outline-black rounded-0" href="{% url 'account_login' %}">Back to Login</a>
-  <button type="submit">{% trans "Sign Up" %}</button>
-</form>
 
+  {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+
+  <div class="mt-4">
+    <button type="submit" class="btn allauth-button">{% trans "Sign Up" %}</button>
+    <a class="btn allauth-button" href="{% url 'account_login' %}">Back to Login</a>
+  </div>
+</form>
 {% endblock %}
