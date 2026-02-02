@@ -113,6 +113,11 @@ h2 { font-family: var(--secondary-font); }
     letter-spacing: 0.05em;
     transition: all 0.3s ease;
     border-radius: 0;
+    /* IOS conflict overlay correction */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-appearance: none;
+    appearance: none;
 }
 
 .btn-custom-newsletter:hover {
@@ -148,12 +153,19 @@ h2 { font-family: var(--secondary-font); }
     transition: all 0.2s ease-in-out;
     display: inline-flex;
     align-items: center;
+    /* IOS conflict overlay correction */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-appearance: none;
+    appearance: none;
 }
 
 .badge-lab-tag:hover {
     background-color: var(--primary-color);
     color: var(--secondary-color);
     text-decoration: none;
+    background-color: transparent !important; /* Prevents default grey background */
+    -webkit-tap-highlight-color: transparent !important;
 }
 
 .badge-lab-tag-checkout {
@@ -168,12 +180,19 @@ h2 { font-family: var(--secondary-font); }
     transition: all 0.2s ease-in-out;
     display: inline-flex;
     align-items: center;
+    /* IOS conflict overlay correction */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-appearance: none;
+    appearance: none;
 }
 
 .badge-lab-tag-checkout:hover {
     background-color: var(--highlight-color);
     color: var(--secondary-color);
     text-decoration: none;
+    background-color: transparent !important; /* Prevents default grey background */
+    -webkit-tap-highlight-color: transparent !important;
 }
 .allauth-button  {
         background-color: var(--secondary-color);
@@ -187,12 +206,19 @@ h2 { font-family: var(--secondary-font); }
     transition: all 0.2s ease-in-out;
     display: inline-flex;
     align-items: center;
+    /* IOS conflict overlay correction */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-appearance: none;
+    appearance: none;
 }
 
 .allauth-button:hover {
     background-color: var(--primary-color);
     color: var(--secondary-color);
     text-decoration: none;
+    background-color: transparent !important; /* Prevents default grey background */
+    -webkit-tap-highlight-color: transparent !important;
 }
 
 
@@ -209,11 +235,18 @@ h2 { font-family: var(--secondary-font); }
 .hero-btn {
     border: 2.0px solid var(--secondary-color);
     color: var(--secondary-color);
+      /* IOS conflict overlay correction */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-appearance: none;
+    appearance: none;
+
 }
 
 .btn-custom:hover { background: var(--primary-color); color: var(--secondary-color); background-color: transparent !important;
     -webkit-tap-highlight-color: transparent !important;  }
-.hero-btn:hover { background: var(--secondary-color); color: var(--primary-color); }
+.hero-btn:hover { background: var(--secondary-color); color: var(--primary-color); background-color: transparent !important; /* Prevents default grey background */
+    -webkit-tap-highlight-color: transparent !important;  }
 
 .btn-custom i {
     font-size: 1rem;
