@@ -331,6 +331,7 @@ h2 { font-family: var(--secondary-font); }
 }
 
 /* Mobile/Touch ONLY Tweaks */
+
 @media (pointer: coarse) {
     .btn-custom, .hero-btn {
         -webkit-appearance: none;
@@ -342,4 +343,22 @@ h2 { font-family: var(--secondary-font); }
         background-color: transparent !important;
         color: var(--primary-color) !important;
     }
+}
+
+/* Specific fix for Mobile Chrome & Chromium browsers */
+.btn-custom:focus,
+.btn-custom:active,
+.btn-custom-newsletter:focus,
+.btn-custom-newsletter:active,
+.btn-outline-dark:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    color: var(--primary-color) !important;
+}
+
+/* This targets the 'moment of impact' in Chrome */
+.btn-custom:active {
+    background-color: var(--primary-color) !important;
+    color: var(--secondary-color) !important;
 }
