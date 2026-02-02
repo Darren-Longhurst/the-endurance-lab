@@ -4,6 +4,7 @@
 {% url 'products' as products_url %}
 {% url 'view_cart' as view_cart_url %}
 {% url 'profile' as profile_url %}
+{% url 'contact' as contact_url %}
 
 <!doctype html>
 <html lang="en">
@@ -198,6 +199,12 @@
     <i class="fab fa-linkedin"></i>
 </a>
                 </p>
+                <div class="mt-4">
+    <p class="mb-2 font-weight-bold text-uppercase small text-muted">Support</p>
+    <a href="{{ contact_url }}" class="badge badge-lab-tag p-2 px-3 m-0 text-uppercase">
+        <i class="fas fa-envelope mr-2"></i> Contact The Lab
+    </a>
+</div>
             </div>
         </div>
     </div>

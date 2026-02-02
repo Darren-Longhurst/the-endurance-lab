@@ -8,3 +8,14 @@ class NewsletterSubscriber(models.Model):
 
     def __str__(self):
         return self.email
+
+#Contact Form
+
+class ContactInquiry(models.Model):
+    full_name = models.CharField(max_length=100)
+    email = models.EmailField()
+    message = models.TextField()
+    date_submitted = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Inquiry from {self.full_name} - {self.date_submitted.strftime('%d/%m/%Y')}"

@@ -1,6 +1,8 @@
 
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.core.mail import send_mail
+from .models import ContactInquiry
 from products.models import Product
 from .forms import NewsletterForm
 
@@ -26,3 +28,29 @@ def index(request):
     }
 
     return render(request, 'home/index.html', context)
+
+# Contact Section
+
+def contact(request):
+    if request.method == 'POST':
+        name = request.POST.get('full_name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+
+        # Basic Validation check
+        if not name or not email or not message:
+            messages.error(request, 'Please fill in all fields before submitting.')
+            return redirect('contact')
+
+        # Send Email Logic
+        send_mail(
+            f'Contact Form Inquiry from {name}',
+            message,
+            email,
+            ['theendurancelabmp4@gmail.com'],
+        )
+
+        messages.success(request, 'Message sent! We will get back to you soon.')
+        return redirect('contact')
+
+    return render(request, 'home/contact.html')
