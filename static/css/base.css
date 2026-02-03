@@ -195,6 +195,10 @@ h2 { font-family: var(--secondary-font); }
     text-decoration: none;
 }
 
+.allauth-page {
+    margin-top: 100px; /* This pushes it below your #top-nav */
+}
+
 
 .btn-custom {
     border: 1.0px solid var(--primary-color);
@@ -304,5 +308,11 @@ h2 { font-family: var(--secondary-font); }
         position: fixed;
         top: 0; right: 0; left: 0;
         z-index: 1030;
+    }
+}
+
+@media (min-width: 992px) {
+    .allauth-page {
+        margin-top: 210px;
     }
 }
