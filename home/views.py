@@ -2,7 +2,9 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.mail import send_mail
-from .models import ContactInquiry
+from django.http import Http404, HttpResponseNotAllowed
+from django.core.exceptions import PermissionDenied
+from django.views import View
 from products.models import Product
 from .forms import NewsletterForm
 
@@ -59,3 +61,40 @@ def contact(request):
 
 def privacy_policy(request):
     return render(request, "privacy_policy.html")
+
+# --- ERROR TESTING VIEWS ---
+# These views are specifically for testing documentation
+
+class Force403View(View):
+    def get(self, request, *args, **kwargs):
+        raise PermissionDenied
+
+class Force404View(View):
+    def get(self, request, *args, **kwargs):
+        raise Http404("Page not found test")
+
+class Force405View(View):
+    def get(self, request, *args, **kwargs):
+        return HttpResponseNotAllowed(['POST'])
+
+class Force500View(View):
+    def get(self, request, *args, **kwargs):
+        raise Exception("Internal server error test")
+
+# --- CUSTOM ERROR HANDLERS ---
+
+def handler403(request, exception):
+    """ Custom 403 Forbidden page """
+    return render(request, '403.html', status=403)
+
+def handler404(request, exception):
+    """ Custom 404 Not Found page """
+    return render(request, '404.html', status=404)
+
+def handler405(request, exception=None):
+    """ Custom 405 Method Not Allowed page """
+    return render(request, '405.html', status=405)
+
+def handler500(request):
+    """ Custom 500 Internal Server Error page """
+    return render(request, '500.html', status=500)
