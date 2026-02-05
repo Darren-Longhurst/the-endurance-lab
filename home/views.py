@@ -54,3 +54,8 @@ def contact(request):
         return redirect('contact')
 
     return render(request, 'home/contact.html')
+
+# Privacy Policy
+
+def privacy_policy(request):
+    return render(request, "privacy_policy.html")

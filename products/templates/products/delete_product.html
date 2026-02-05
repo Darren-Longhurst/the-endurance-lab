@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-5 delete-product">
+  <h2 class="mb-3">Delete product</h2>
+  <p>
+    Are you sure you want to delete <strong>{{ product.name }}</strong>?
+    This action cannot be undone.
+  </p>
+
+  <form method="POST">
+    {% csrf_token %}
+    <a href="{% url 'product_detail' product.id %}" class="badge badge-info rounded-0">
+      Cancel
+    </a>
+    <button type="submit" class="badge badge-danger rounded-0">
+      Yes, delete
+    </button>
+  </form>
+</div>
+{% endblock %}
