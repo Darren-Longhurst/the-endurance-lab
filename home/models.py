@@ -17,5 +17,10 @@ class ContactInquiry(models.Model):
     message = models.TextField()
     date_submitted = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ['-date_submitted']
+        verbose_name = 'Contact enquiry'
+        verbose_name_plural = 'Contact enquiries'
+
     def __str__(self):
         return f"Inquiry from {self.full_name} - {self.date_submitted.strftime('%d/%m/%Y')}"

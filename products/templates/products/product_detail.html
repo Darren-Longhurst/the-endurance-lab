@@ -57,11 +57,11 @@
                        {% if request.user.is_superuser %}
                         <div class="mt-2">
                             <a href="{% url 'edit_product' product.id %}"
-                                 class="badge badge-info p-2 mr-0 text-uppercase">
+                                 class="badge allauth-info-btn p-2 mr-0 text-uppercase">
                                  Edit
                             </a>
                             <a href="{% url 'delete_product' product.id %}"
-                                class="badge badge-danger p-2 text-uppercase">
+                                class="badge allauth-danger-btn p-2 text-uppercase">
                                 Delete
                             </a>
                         </div>

@@ -15,7 +15,7 @@
             </div>
         </div>
         {% if grand_total and not on_profile_page %}
-            <p class="hero-font bg-white text-black py-1">Your Cart ({{ product_count }})</p>
+            <p class="bg-white text-black py-1">Your Cart ({{ product_count }})</p>
             <div class="bag-notification-wrapper">
                 {% for item in cart_items %}
                     <div class="row">
@@ -61,7 +61,7 @@
 
 <div class="row mt-2">
     <div class="col">
-        <a href="{% url 'view_cart' %}" class="btn btn-black btn-block rounded-0">
+        <a href="{% url 'view_cart' %}" class="badge allauth-info-btn btn-block rounded-0">
             <span class="text-uppercase">Go To Secure Checkout</span>
             <span class="icon">
                 <i class="fas fa-lock"></i>
