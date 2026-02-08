@@ -32,6 +32,8 @@ ALLOWED_HOSTS = [
     'the-endurance-lab-af104b96933b.herokuapp.com',  # Heroku
 ]
 
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
 
 # Application definition
 
@@ -196,6 +198,10 @@ if 'USE_AWS' in os.environ and not DEBUG:
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
     AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
     AWS_S3_SIGNATURE_VERSION = 's3v4'
+    AWS_S3_OBJECT_PARAMETERS = {
+        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+        'CacheControl': 'max-age=94608000',
+    }
 
     # Static and media files
     STATICFILES_STORAGE = 'custom_storages.StaticStorage'
