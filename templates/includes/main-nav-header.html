@@ -9,7 +9,7 @@
             <a class="font-weight-bold nav-link text-white mr-5" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 All Products
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
+            <div class="dropdown-menu border-0" role="menu" aria-labelledby="all-products-link">
                 <a href="{{ products_url }}?sort=price&direction=asc" class="dropdown-item">By Price</a>
                 <a href="{{ products_url }}?sort=rating&direction=desc" class="dropdown-item ">By Rating</a>
                 <a href="{{ products_url }}?sort=category&direction=asc" class="dropdown-item ">By Category</a>
@@ -21,7 +21,7 @@
             <a class="font-weight-bold nav-link text-white mr-5" href="#" id="hydration-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Hydration
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="hydration-link">
+            <div class="dropdown-menu border-0" role="menu" aria-labelledby="hydration-link">
                 <a href="{{ products_url }}?category=hydration,electrolyte_powders" class="dropdown-item">Electrolyte Powders</a>
                 <a href="{{ products_url }}?category=hydration,hydration_tabs" class="dropdown-item">Hydration Tabs</a>
                 <a href="{{ products_url }}?category=hydration,bottles" class="dropdown-item">Bottles</a>
@@ -33,7 +33,7 @@
             <a class="font-weight-bold nav-link text-white mr-5" href="#" id="energy-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Energy
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="energy-link">
+            <div class="dropdown-menu border-0" role="menu" aria-labelledby="energy-link">
                 <a href="{{ products_url }}?category=energy,energy_gels" class="dropdown-item">Energy Gels</a>
                 <a href="{{ products_url }}?category=energy,energy_powder" class="dropdown-item">Energy Powder</a>
                 <a href="{{ products_url }}?category=energy,energy_bars_and_chews" class="dropdown-item">Energy Bars &amp; Chew Bars</a>
@@ -46,28 +46,28 @@
             <a class="font-weight-bold nav-link text-white mr-5" href="#" id="recovery-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Recovery
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="recovery-link">
+            <div class="dropdown-menu border-0" role="menu" aria-labelledby="recovery-link">
                 <a href="{{ products_url }}?category=recovery,shakers" class="dropdown-item">Shakers</a>
                 <a href="{{ products_url }}?category=recovery,recovery_powder" class="dropdown-item">Recovery Powder</a>
                 <a href="{{ products_url }}?category=recovery,shakers,recovery_powder" class="dropdown-item">All Recovery</a>
             </div>
         </li>
-            <li class="nav-item dropdown">
+        <li class="nav-item dropdown">
             <a class="font-weight-bold nav-link text-white mr-5" href="#" id="supplements-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Supplements
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="supplements-link">
+            <div class="dropdown-menu border-0" role="menu" aria-labelledby="supplements-link">
                 <a href="{{ products_url }}?category=supplements,multi_vitamin" class="dropdown-item">Multi Vitamin</a>
                 <a href="{{ products_url }}?category=supplements,omega_3" class="dropdown-item">Omega 3</a>
                 <a href="{{ products_url }}?category=supplements,biotin_complex" class="dropdown-item">Biotin Complex</a>
                 <a href="{{ products_url }}?category=supplements,multi_vitamin,omega_3,biotin_complex" class="dropdown-item">All Supplements</a>
             </div>
         </li>
-          <li class="nav-item dropdown">
+        <li class="nav-item dropdown">
             <a class="font-weight-bold nav-link text-white mr-5" href="#" id="merchandise-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Merchandise
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="merchandise-link">
+            <div class="dropdown-menu border-0" role="menu" aria-labelledby="merchandise-link">
                 <a href="{{ products_url }}?category=merchandise,t_shirts" class="dropdown-item">T Shirts</a>
                 <a href="{{ products_url }}?category=merchandise,beanies" class="dropdown-item">Beanies</a>
                 <a href="{{ products_url }}?category=merchandise,caps" class="dropdown-item">Caps</a>
@@ -79,7 +79,7 @@
                 Sale
             </a>
         </li>
-          <li class="nav-item">
+        <li class="nav-item">
             <a href="{{ contact_url }}" class="font-weight-bold text-white nav-link mr-5">
                 Contact
             </a>

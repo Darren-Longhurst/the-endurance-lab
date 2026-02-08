@@ -10,21 +10,30 @@
     --header-offset-desktop: 50px;
 }
 
-html { height: 100%; }
+html {
+    height: 100%;
+}
+
 body {
     font-family: var(--secondary-font);
     background-color: var(--secondary-color);
     color: var(--primary-color);
 }
 
-h1 { font-family: var(--primary-font); }
-h2 { font-family: var(--secondary-font); }
+h1 {
+    font-family: var(--primary-font);
+}
+
+h2 {
+    font-family: var(--secondary-font);
+}
 
 .text-shrink {
     font-size: clamp(0.3rem, 2.5vw, 0.8rem);
 }
 
-.site-content, .delete-product  {
+.site-content,
+.delete-product {
     margin-top: 96px;
 }
 
@@ -38,8 +47,16 @@ h2 { font-family: var(--secondary-font); }
     z-index: 1031;
 }
 
-#top-nav, .main-nav-container { background-color: var(--primary-color); }
-#top-nav { min-height: 100px; display: flex; align-items: center; }
+#top-nav,
+.main-nav-container {
+    background-color: var(--primary-color);
+}
+
+#top-nav {
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+}
 
 #delivery-banner {
     background-color: var(--primary-color);
@@ -52,11 +69,13 @@ h2 { font-family: var(--secondary-font); }
 }
 
 /* --- 3. Hero Section (Home) --- */
-.hero-section { width: 100%; }
+.hero-section {
+    width: 100%;
+}
 
 .hero-boxed {
     min-height: 70vh;
-    background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), var(--hero-url);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), var(--hero-url);
     background-size: cover;
     background-position: center;
     display: flex;
@@ -78,30 +97,35 @@ h2 { font-family: var(--secondary-font); }
     margin-top: 20px;
 }
 
-.endurance-line  {
+.endurance-line {
     display: block;
     font-size: clamp(6.5rem, 12vw, 8rem);
     line-height: 0.85;
 }
 
-.optimised-line  {
+.optimised-line {
     display: block;
     font-size: clamp(5.8rem, 10.6vw, 7.1rem);
     line-height: 0.85;
 }
 
-.endurance-line { font-weight: 900; }
-.optimised-line { font-weight: 400; }
+.endurance-line {
+    font-weight: 900;
+}
+
+.optimised-line {
+    font-weight: 400;
+}
 
 /* -- Newsletter Signup --*/
 
 #newsletter {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/static/images/swimming.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/images/swimming.jpg');
     background-size: cover;
     background-attachment: fixed;
 }
 
-.btn-custom-newsletter  {
+.btn-custom-newsletter {
     font-family: var(--primary-font);
     border-color: var(--secondary-color);
     color: var(--secondary-color);
@@ -123,7 +147,8 @@ h2 { font-family: var(--secondary-font); }
 
 
 /* --- 6. UI Components (Buttons/Cards) --- */
-.btn-custom, .hero-btn {
+.btn-custom,
+.hero-btn {
     font-family: var(--primary-font);
     max-width: 280px;
     white-space: nowrap;
@@ -176,24 +201,24 @@ h2 { font-family: var(--secondary-font); }
     text-decoration: none;
 }
 
-.allauth-info-btn  {
+.allauth-info-btn {
     background-color: var(--primary-color);
     color: var(--secondary-color);
     border: 1px solid var(--primary-color);
 }
 
-.allauth-info-btn:hover  {
+.allauth-info-btn:hover {
     background-color: transparent !important;
     color: var(--primary-color) !important;
 }
 
-.allauth-danger-btn  {
+.allauth-danger-btn {
     border: 1px solid var(--highlight-color);
     color: var(--secondary-color);
     background-color: var(--highlight-color);
 }
 
-.allauth-danger-btn:hover  {
+.allauth-danger-btn:hover {
     background-color: transparent !important;
     color: var(--highlight-color) !important;
 }
@@ -213,20 +238,27 @@ h2 { font-family: var(--secondary-font); }
     color: var(--secondary-color);
 }
 
-.btn-custom:hover { background: var(--primary-color); color: var(--secondary-color); }
-.hero-btn:hover { background: var(--secondary-color); color: var(--primary-color); }
+.btn-custom:hover {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.hero-btn:hover {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+}
 
 .btn-custom i {
     font-size: 1rem;
-    position:relative;
+    position: relative;
     top: -2px;
 }
 
-.top-rated-btn{
-  font-size: 0.85rem;
-  line-height: 1.2;
-  white-space: normal;
-  padding: .4rem .5rem;
+.top-rated-btn {
+    font-size: 0.85rem;
+    line-height: 1.2;
+    white-space: normal;
+    padding: .4rem .5rem;
 }
 
 /* Sale Ribbon on Product Cards */
@@ -256,8 +288,14 @@ h2 { font-family: var(--secondary-font); }
 }
 
 /* Marketing Section */
-.marketing .col-lg-4 { margin: 3.5rem 0; text-align: center; }
-.marketing .col-lg-4 p { margin: 0 .75rem; }
+.marketing .col-lg-4 {
+    margin: 3.5rem 0;
+    text-align: center;
+}
+
+.marketing .col-lg-4 p {
+    margin: 0 .75rem;
+}
 
 /* Latest Banner */
 .latest-banner {
@@ -265,13 +303,39 @@ h2 { font-family: var(--secondary-font); }
     padding: 64px 0;
     background: url('../images/mtb-latest-products.jpg') center/cover no-repeat;
 }
-.latest-banner__overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.55); }
-.latest-banner__content { position: relative; z-index: 1; }
-.latest-banner__card { border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.25); }
+
+.latest-banner__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+}
+
+.latest-banner__content {
+    position: relative;
+    z-index: 1;
+}
+
+.latest-banner__card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
 
 /* Message/Toast UI */
-.message-container { position: fixed; top: 140px; right: 15px; z-index: 999999999; }
-.btt-button { height: 42px; width: 42px; position: fixed; bottom: 10px; right: 10px; }
+.message-container {
+    position: fixed;
+    top: 140px;
+    right: 15px;
+    z-index: 999999999;
+}
+
+.btt-button {
+    height: 42px;
+    width: 42px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
 
 
 /* Ensure white stays white*/
@@ -286,35 +350,35 @@ h2 { font-family: var(--secondary-font); }
 
 /* Cart */
 
-.remove-item  {
+.remove-item {
     color: var(--highlight-color) !important;
     border: 1px solid var(--highlight-color) !important;
-    width:32px;
-    height:32px;
+    width: 32px;
+    height: 32px;
 }
 
-.remove-item:hover  {
+.remove-item:hover {
     color: var(--secondary-color) !important;
     background-color: var(--highlight-color) !important;
     border: 1px solid var(--highlight-color) !important;
-    width:32px;
-    height:32px;
+    width: 32px;
+    height: 32px;
 }
 
-.update-link  {
+.update-link {
     color: var(--primary-color) !important;
     border: 1px solid var(--primary-color) !important;
     background-color: transparent;
-    width:32px;
-    height:32px;
+    width: 32px;
+    height: 32px;
 }
 
-.update-link:hover  {
+.update-link:hover {
     color: var(--secondary-color) !important;
     background-color: var(--primary-color) !important;
     border: 1px solid var(--primary-color) !important;
-    width:32px;
-    height:32px;
+    width: 32px;
+    height: 32px;
 }
 
 /* Media Queries*/
@@ -326,33 +390,65 @@ h2 { font-family: var(--secondary-font); }
 }
 
 @media (max-width: 991px) {
-    .hero-inner { padding-top: 0 !important; }
+    .hero-inner {
+        padding-top: 0 !important;
+    }
+
     .hero-boxed {
         min-height: 50vh;
         padding: 20px;
     }
-    .hero-content { padding: 0; }
-    .tag-text { white-space: normal; font-size: 1.1rem; }
-    .allauth-page { padding-top: 24px; padding-bottom: 48px; }
+
+    .hero-content {
+        padding: 0;
+    }
+
+    .tag-text {
+        white-space: normal;
+        font-size: 1.1rem;
+    }
+
+    .allauth-page {
+        padding-top: 24px;
+        padding-bottom: 48px;
+    }
 }
 
 @media (max-width: 576px) {
-    .btn-custom, .hero-btn {
+
+    .btn-custom,
+    .hero-btn {
         max-width: 100%;
         font-size: 1.2rem;
     }
 }
 
 @media (min-width: 992px) {
-    .hero-inner { padding-top: var(--header-offset-desktop); }
-    .hero-content { padding: 36px 40px 44px; }
-    .header-container { padding-top: 60px; }
-    .message-container { top: 220px; }
-    .container { max-width: 80%; }
+    .hero-inner {
+        padding-top: var(--header-offset-desktop);
+    }
+
+    .hero-content {
+        padding: 36px 40px 44px;
+    }
+
+    .header-container {
+        padding-top: 60px;
+    }
+
+    .message-container {
+        top: 220px;
+    }
+
+    .container {
+        max-width: 80%;
+    }
 
     .fixed-top-desktop-only {
         position: fixed;
-        top: 0; right: 0; left: 0;
+        top: 0;
+        right: 0;
+        left: 0;
         z-index: 1030;
     }
 }

@@ -1,47 +1,32 @@
 <div class="d-inline-flex align-items-center">
 
-  <form class="form update-form mb-0 mr-2 d-inline-flex align-items-center"
-        method="POST"
-        action="{% url 'adjust_cart' item.item_id %}">
-    {% csrf_token %}
+    <form class="form update-form mb-0 mr-2 d-inline-flex align-items-center" method="POST" action="{% url 'adjust_cart' item.item_id %}">
+        {% csrf_token %}
 
-    <div class="input-group input-group-sm mr-2">
-      <div class="input-group-prepend">
-        <button type="button"
-                class="decrement-qty btn btn-sm rounded-0"
-                data-item_id="{{ item.item_id }}">
-          <i class="fas fa-minus fa-sm"></i>
+        <div class="input-group input-group-sm mr-2">
+            <div class="input-group-prepend">
+                <button type="button" class="decrement-qty btn btn-sm rounded-0" data-item_id="{{ item.item_id }}">
+                    <i class="fas fa-minus fa-sm"></i>
+                </button>
+            </div>
+
+            <input class="form-control qty_input text-center" type="number" name="quantity" value="{{ item.quantity }}" min="1" max="99">
+
+            <div class="input-group-append">
+                <button type="button" class="increment-qty btn btn-sm rounded-0" data-item_id="{{ item.item_id }}">
+                    <i class="fas fa-plus fa-sm"></i>
+                </button>
+            </div>
+        </div>
+
+        <button type="submit" class="update-link d-inline-flex align-items-center justify-content-center border border-info rounded-0" title="Update">
+            <i class="fas fa-sync-alt"></i>
         </button>
-      </div>
 
-      <input class="form-control qty_input text-center"
-             type="number"
-             name="quantity"
-             value="{{ item.quantity }}"
-             min="1" max="99">
+    </form>
 
-      <div class="input-group-append">
-        <button type="button"
-                class="increment-qty btn btn-sm rounded-0"
-                data-item_id="{{ item.item_id }}">
-          <i class="fas fa-plus fa-sm"></i>
-        </button>
-      </div>
-    </div>
-
-    <button type="submit"
-            class="update-link d-inline-flex align-items-center justify-content-center border border-info rounded-0"
-            title="Update">
-      <i class="fas fa-sync-alt"></i>
-    </button>
-
-  </form>
-
-  <a class="remove-item remove-icon d-inline-flex align-items-center justify-content-center border border-danger"
-     id="remove_{{ item.item_id }}"
-     role="button"
-     title="Remove">
-    <i class="fas fa-trash-alt"></i>
-  </a>
+    <a class="remove-item remove-icon d-inline-flex align-items-center justify-content-center border border-danger" data-item-id="remove_{{ item.item_id }}" role="button" title="Remove">
+        <i class="fas fa-trash-alt"></i>
+    </a>
 
 </div>
