@@ -284,6 +284,39 @@ h2 { font-family: var(--secondary-font); }
     accent-color: red;
 }
 
+/* Cart */
+
+.remove-item  {
+    color: var(--highlight-color) !important;
+    border: 1px solid var(--highlight-color) !important;
+    width:32px;
+    height:32px;
+}
+
+.remove-item:hover  {
+    color: var(--secondary-color) !important;
+    background-color: var(--highlight-color) !important;
+    border: 1px solid var(--highlight-color) !important;
+    width:32px;
+    height:32px;
+}
+
+.update-link  {
+    color: var(--primary-color) !important;
+    border: 1px solid var(--primary-color) !important;
+    background-color: transparent;
+    width:32px;
+    height:32px;
+}
+
+.update-link:hover  {
+    color: var(--secondary-color) !important;
+    background-color: var(--primary-color) !important;
+    border: 1px solid var(--primary-color) !important;
+    width:32px;
+    height:32px;
+}
+
 /* Media Queries*/
 
 @media (min-width: 992px) {

@@ -80,7 +80,7 @@
                                     <td class="py-3">
                                         <p class="my-0">£{{ item.current_price|floatformat:2 }}</p>
                                     </td>
-                                    <td class="py-3 w-25">
+                                    <td class="py-3">
                                         {% include "cart/quantity-form.html" %}
                                     </td>
                                     <td class="py-3">
@@ -104,7 +104,7 @@
 
                 {% else %}
                     <p class="lead mb-5">Your cart is currently empty.</p>
-                    <a href="{{ products_url }}" class="btn btn-outline-black rounded-0 btn-lg">
+                    <a href="{{ products_url }}" class="btn rounded-0 btn-lg">
                         <span class="icon">
                             <i class="fas fa-chevron-left"></i>
                         </span>
@@ -126,16 +126,9 @@
 {% include 'products/includes/quantity_input_script.html' %}
 <script type="text/javascript">
 
-    // Update quantity on click
-    $('.update-link').click(function(e) {
-        var form = $(this).prev('.update-form');
-        form.submit();
-    })
-
    // Remove item and reload on click
 $('.remove-item').click(function(e) {
     var csrfToken = "{{ csrf_token }}";
-    // This will now capture the full key (e.g., '1_5') from the ID
     var itemId = $(this).attr('id').split('remove_')[1];
     var url = `/cart/remove/${itemId}/`;
     var data = {'csrfmiddlewaretoken': csrfToken};
