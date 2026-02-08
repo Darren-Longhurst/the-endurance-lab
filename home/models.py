@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 
+
 class NewsletterSubscriber(models.Model):
     email = models.EmailField(unique=True)
     date_added = models.DateTimeField(auto_now_add=True)
@@ -9,7 +10,8 @@ class NewsletterSubscriber(models.Model):
     def __str__(self):
         return self.email
 
-#Contact Form
+# Contact Form
+
 
 class ContactInquiry(models.Model):
     full_name = models.CharField(max_length=100)

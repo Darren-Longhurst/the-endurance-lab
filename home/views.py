@@ -8,6 +8,7 @@ from django.views import View
 from products.models import Product
 from .forms import NewsletterForm
 
+
 def index(request):
     """ A view to return the index page, top rated products, and newsletter signup """
 
@@ -32,6 +33,7 @@ def index(request):
     return render(request, 'home/index.html', context)
 
 # Contact Section
+
 
 def contact(request):
     if request.method == 'POST':
@@ -59,23 +61,28 @@ def contact(request):
 
 # Privacy Policy
 
+
 def privacy_policy(request):
     return render(request, "privacy_policy.html")
 
 # --- ERROR TESTING VIEWS ---
 # These views are specifically for testing documentation
 
+
 class Force403View(View):
     def get(self, request, *args, **kwargs):
         raise PermissionDenied
+
 
 class Force404View(View):
     def get(self, request, *args, **kwargs):
         raise Http404("Page not found test")
 
+
 class Force405View(View):
     def get(self, request, *args, **kwargs):
         return HttpResponseNotAllowed(['POST'])
+
 
 class Force500View(View):
     def get(self, request, *args, **kwargs):
@@ -83,13 +90,16 @@ class Force500View(View):
 
 # --- CUSTOM ERROR HANDLERS ---
 
+
 def handler403(request, exception):
     """ Custom 403 Forbidden page """
     return render(request, '403.html', status=403)
 
+
 def handler404(request, exception):
     """ Custom 404 Not Found page """
     return render(request, '404.html', status=404)
+
 
 def handler500(request):
     """ Custom 500 Internal Server Error page """

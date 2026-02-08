@@ -13,7 +13,6 @@ def cart_contents(request):
     for item_id, quantity in cart.items():
         product = get_object_or_404(Product, pk=item_id)
 
-
         line_item_total = quantity * product.price
 
         total += line_item_total

@@ -2,10 +2,12 @@ from django.db import models
 from django.templatetags.static import static
 from django.shortcuts import render
 
+
 class Category(models.Model):
 
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
+
     class Meta:
         verbose_name_plural = 'Categories'
 
@@ -14,6 +16,7 @@ class Category(models.Model):
 
     def get_friendly_name(self):
         return self.friendly_name
+
 
 class Product(models.Model):
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
@@ -50,6 +53,7 @@ class Product(models.Model):
         if self.image_url:
             return self.image_url
         return static("images/noimage.png")
+
 
 class ProductVariant(models.Model):
     product = models.ForeignKey(Product, related_name='variants', on_delete=models.CASCADE)

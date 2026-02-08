@@ -12,6 +12,7 @@ from cart.contexts import cart_contents
 import stripe
 import json
 
+
 @require_POST
 def cache_checkout_data(request):
     try:
@@ -89,7 +90,8 @@ def checkout(request):
             request.session['save_info'] = 'save-info' in request.POST
             return redirect(reverse('checkout_success', args=[order.order_number]))
         else:
-            messages.error(request, 'There was an error with your form. Please double check your info.')
+            messages.error(request,
+                           'There was an error with your form. Please double check your info.')
 
     # --- GET Logic (Correctly Aligned) ---
     else:
@@ -143,6 +145,7 @@ def checkout(request):
     }
 
     return render(request, template, context)
+
 
 def checkout_success(request, order_number):
     """

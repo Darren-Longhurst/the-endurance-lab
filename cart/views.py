@@ -2,9 +2,11 @@ from django.shortcuts import render, redirect, reverse, HttpResponse, get_object
 from django.contrib import messages
 from products.models import Product, ProductVariant
 
+
 def view_cart(request):
     """ A view to render the shopping cart page. """
     return render(request, 'cart/cart.html')
+
 
 def add_to_cart(request, item_id):
     """ Add a quantity of the specific product/variant to the cart """
@@ -32,6 +34,7 @@ def add_to_cart(request, item_id):
     request.session['cart'] = cart
     return redirect(redirect_url)
 
+
 def adjust_cart(request, item_id):
     """ Adjust the quantity of the specified product key """
     # Note: item_id here will now be the 'item_key' (e.g., "1_5")
@@ -47,6 +50,7 @@ def adjust_cart(request, item_id):
 
     request.session['cart'] = cart
     return redirect(reverse('view_cart'))
+
 
 def remove_from_cart(request, item_id):
     """ Remove the item from the cart """
