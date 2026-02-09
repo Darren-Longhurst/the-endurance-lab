@@ -25,7 +25,7 @@
 
     </form>
 
-    <a class="remove-item remove-icon d-inline-flex align-items-center justify-content-center border border-danger" data-item-id="remove_{{ item.item_id }}" role="button" aria-label="Remove {{ item.product.name }} from cart">
+    <a class="remove-item remove-icon d-inline-flex align-items-center justify-content-center border border-danger" id="remove_{{ item.item_id }}" data-item-id="{{ item.item_id }}" role="button" aria-label="Remove {{ item.product.name }} from cart">
         <i class="fas fa-trash-alt" aria-hidden="true"></i>
     </a>
 
