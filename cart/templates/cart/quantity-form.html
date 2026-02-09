@@ -5,28 +5,28 @@
 
         <div class="input-group input-group-sm mr-2">
             <div class="input-group-prepend">
-                <button type="button" class="decrement-qty btn btn-sm rounded-0" data-item_id="{{ item.item_id }}">
-                    <i class="fas fa-minus fa-sm"></i>
+                <button type="button" class="decrement-qty btn btn-sm rounded-0" aria-label="Decrease quantity of {{ item.product.name }}" data-item_id="{{ item.item_id }}">
+                    <i class="fas fa-minus fa-sm" aria-hidden="true"></i>
                 </button>
             </div>
 
-            <input class="form-control qty_input text-center" type="number" name="quantity" value="{{ item.quantity }}" min="1" max="99">
+            <input class="form-control qty_input text-center" type="number" name="quantity" value="{{ item.quantity }}" min="1" max="99" aria-label="Quantity of {{ item.product.name }}">
 
             <div class="input-group-append">
-                <button type="button" class="increment-qty btn btn-sm rounded-0" data-item_id="{{ item.item_id }}">
-                    <i class="fas fa-plus fa-sm"></i>
+                <button type="button" class="increment-qty btn btn-sm rounded-0" aria-label="Increase quantity of {{ item.product.name }}" data-item_id="{{ item.item_id }}">
+                    <i class="fas fa-plus fa-sm" aria-hidden="true"></i>
                 </button>
             </div>
         </div>
 
-        <button type="submit" class="update-link d-inline-flex align-items-center justify-content-center border border-info rounded-0" title="Update">
-            <i class="fas fa-sync-alt"></i>
+        <button type="submit" class="update-link d-inline-flex align-items-center justify-content-center border border-info rounded-0" aria-label="Update quantity of {{ item.product.name }}">
+            <i class="fas fa-sync-alt" aria-hidden="true"></i>
         </button>
 
     </form>
 
-    <a class="remove-item remove-icon d-inline-flex align-items-center justify-content-center border border-danger" data-item-id="remove_{{ item.item_id }}" role="button" title="Remove">
-        <i class="fas fa-trash-alt"></i>
+    <a class="remove-item remove-icon d-inline-flex align-items-center justify-content-center border border-danger" data-item-id="remove_{{ item.item_id }}" role="button" aria-label="Remove {{ item.product.name }} from cart">
+        <i class="fas fa-trash-alt" aria-hidden="true"></i>
     </a>
 
 </div>
