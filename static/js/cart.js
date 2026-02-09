@@ -9,36 +9,29 @@ function initBackToTop() {
 
 function initRemoveItem(reloadFn = () => window.location.reload()) {
   $(".remove-item").on("click", function () {
-    const itemId = $(this).data("item-id"); // "19_20"
+    // e.g. id="remove_19_20" -> "19_20"
+    const itemId = $(this).attr("id").replace("remove_", "");
     const csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
     const url = `/cart/remove/${itemId}/`;
 
     $.post(url, { csrfmiddlewaretoken: csrfToken })
-      .done(function () {
-        reloadFn();
-      })
-      .fail(function () {
-        reloadFn();
-      });
+      .done(reloadFn)
+      .fail(reloadFn);
   });
 }
 
 function initCartPage() {
-  if (typeof $ === "undefined") return; // safety if jquery isn't loaded
+  if (typeof $ === "undefined") return;
   initBackToTop();
   initRemoveItem();
 }
 
-// Auto-init when loaded in browser
 if (typeof window !== "undefined") {
   initCartPage();
 }
 
-// Export for Jest tests
-if (typeof module !== "undefined") {
-  module.exports = {
-    initCartPage,
-    initBackToTop,
-    initRemoveItem,
-  };
-}
+module.exports = {
+  initCartPage,
+  initBackToTop,
+  initRemoveItem,
+};
