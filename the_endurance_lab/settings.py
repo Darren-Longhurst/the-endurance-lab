@@ -108,7 +108,6 @@ CSP_FRAME_SRC = ("'self'", "https://js.stripe.com")
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -190,7 +189,6 @@ CLOUDINARY_STORAGE = {
     "CLOUDINARY_URL": os.environ.get("CLOUDINARY_URL"),
 }
 
-# Django 4.2+ / 6.0 storage config
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
@@ -199,6 +197,9 @@ STORAGES = {
         "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
     },
 }
+
+STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
+
 
 
 
@@ -254,15 +255,13 @@ if 'USE_AWS' in os.environ and not DEBUG:
     AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
     AWS_S3_SIGNATURE_VERSION = 's3v4'
     AWS_S3_OBJECT_PARAMETERS = {
-        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
-        'CacheControl': 'max-age=94608000',
+        "CacheControl": "max-age=94608000",
     }
 
     # Static files served from s3
 
     STORAGES["staticfiles"] = {"BACKEND": "custom_storages.StaticStorage",}
-    STATICFILES_LOCATION = 'static'
-    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+    STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static"
 
 
 # Default primary key field type
