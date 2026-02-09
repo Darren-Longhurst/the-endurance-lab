@@ -8,16 +8,18 @@ function initBackToTop() {
 }
 
 function initRemoveItem(reloadFn = () => window.location.reload()) {
-  $(".remove-item").on("click", function (e) {
-    e.preventDefault();
-
-    const itemId = $(this).data("item-id");
+  $(".remove-item").on("click", function () {
+    const itemId = $(this).data("item-id"); // "19_20"
+    const csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
     const url = `/cart/remove/${itemId}/`;
-    const csrfToken = window.CSRF_TOKEN;
 
-    $.post(url, { csrfmiddlewaretoken: csrfToken }).done(function () {
-      reloadFn();
-    });
+    $.post(url, { csrfmiddlewaretoken: csrfToken })
+      .done(function () {
+        reloadFn();
+      })
+      .fail(function () {
+        reloadFn();
+      });
   });
 }
 
@@ -33,8 +35,10 @@ if (typeof window !== "undefined") {
 }
 
 // Export for Jest tests
-module.exports = {
-  initCartPage,
-  initBackToTop,
-  initRemoveItem,
-};
+if (typeof module !== "undefined") {
+  module.exports = {
+    initCartPage,
+    initBackToTop,
+    initRemoveItem,
+  };
+}
