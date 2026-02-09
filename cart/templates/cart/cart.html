@@ -122,27 +122,11 @@
 
 {% block postloadjs %}
 {{ block.super }}
-<script>
-    $('.btt-link').click(function(e) {
-        window.scrollTo(0, 0)
-    })
-</script>
 {% include 'products/includes/quantity_input_script.html' %}
+{# Pass CSRF token to JS safely #}
 <script>
-    // Remove item and reload on click
-    $(document).on('click', '.remove-item', function(e) {
-        e.preventDefault();
-
-        var csrfToken = "{{ csrf_token }}";
-        var itemId = $(this).data('item-id');
-        var url = `/cart/remove/${itemId}/`;
-        var data = {
-            'csrfmiddlewaretoken': csrfToken
-        };
-
-        $.post(url, data).done(function() {
-            location.reload();
-        });
-    });
+  window.CSRF_TOKEN = "{{ csrf_token }}";
 </script>
+
+<script src="{% static 'js/cart.js' %}"></script>
 {% endblock %}
