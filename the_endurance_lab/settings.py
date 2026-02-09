@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'cart',
     'checkout',
     'crispy_forms',
+    'crispy_bootstrap4',
     'profiles',
     'storages',
 ]
@@ -77,10 +78,11 @@ CSP_DEFAULT_SRC = ("'self'",)
 CSP_SCRIPT_SRC = (
     "'self'",
     "https://js.stripe.com",
-    "https://code.jquery.com",
+    "https://m.stripe.network",
     "https://cdn.jsdelivr.net",
+    "https://code.jquery.com",
     "https://kit.fontawesome.com",
-    "https://ka-f.fontawesome.com"
+    "https://ka-f.fontawesome.com",
 )
 CSP_STYLE_SRC = (
     "'self'",
@@ -103,8 +105,18 @@ CSP_IMG_SRC = (
     "data:",
     "blob:"
 )
-CSP_FRAME_SRC = ("'self'", "https://js.stripe.com")
+CSP_FRAME_SRC = (
+    "'self'",
+    "https://js.stripe.com",
+    "https://m.stripe.network",
+)
 
+CSP_CONNECT_SRC = (
+    "'self'",
+    "https://api.stripe.com",
+    "https://m.stripe.network",
+    "https://q.stripe.com",
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -120,6 +132,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'the_endurance_lab.urls'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_ALLOWED_TEMPLATE_PACKS = ["bootstrap4"]
 
 TEMPLATES = [
     {
@@ -261,7 +274,7 @@ if 'USE_AWS' in os.environ and not DEBUG:
     # Static files served from s3
 
     STORAGES["staticfiles"] = {"BACKEND": "custom_storages.StaticStorage",}
-    STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static"
+    STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
 
 
 # Default primary key field type
