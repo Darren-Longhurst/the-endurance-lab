@@ -43,8 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'cloudinary_storage',
+    'django.contrib.staticfiles',
     'cloudinary',
     # Required for allauth
     'django.contrib.sites',
@@ -73,7 +73,6 @@ if not DEBUG:
     SECURE_HSTS_PRELOAD = True
 
 # Content Security Policy
-
 CSP_DEFAULT_SRC = ("'self'",)
 CSP_SCRIPT_SRC = (
     "'self'",
@@ -95,7 +94,15 @@ CSP_FONT_SRC = (
     "https://fonts.gstatic.com",
     "https://ka-f.fontawesome.com"
 )
-CSP_IMG_SRC = ("'self'", "https://res.cloudinary.com", "data:", "https://*.amazonaws.com")
+# ADD CLOUDINARY HERE:
+CSP_IMG_SRC = (
+    "'self'",
+    "https://res.cloudinary.com",
+    "https://*.cloudinary.com",
+    "https://*.amazonaws.com",
+    "data:",
+    "blob:"
+)
 CSP_FRAME_SRC = ("'self'", "https://js.stripe.com")
 
 
@@ -176,14 +183,22 @@ else:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
+# Cloudinary Settings
 
-    # Cloudinary settings
 CLOUDINARY_STORAGE = {
-    'CLOUDINARY_URL': os.environ.get('CLOUDINARY_URL')
+    "CLOUDINARY_URL": os.environ.get("CLOUDINARY_URL"),
 }
 
-# Only Media goes to Cloudinary
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+# Django 4.2+ / 6.0 storage config
+STORAGES = {
+    "default": {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
+
 
 
 # Password validation
@@ -242,17 +257,12 @@ if 'USE_AWS' in os.environ and not DEBUG:
         'CacheControl': 'max-age=94608000',
     }
 
-    # Static and media files
-    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    # Static files served from s3
+
+    STORAGES["staticfiles"] = {"BACKEND": "custom_storages.StaticStorage",}
     STATICFILES_LOCATION = 'static'
-
-    STATICFILES_FINDERS = [
-        'django.contrib.staticfiles.finders.FileSystemFinder',
-        'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    ]
-
-    # Override static and media URLs in production
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

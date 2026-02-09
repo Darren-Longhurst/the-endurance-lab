@@ -300,7 +300,7 @@ h2 {
 .latest-banner {
     position: relative;
     padding: 64px 0;
-    background: url('../images/mtb-latest-products.jpg') center/cover no-repeat;
+    background: url('../images/mtb-latest-products.webp') center/cover no-repeat;
 }
 
 .latest-banner__overlay {
