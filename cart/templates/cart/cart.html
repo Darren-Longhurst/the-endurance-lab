@@ -123,10 +123,6 @@
 {% block postloadjs %}
 {{ block.super }}
 {% include 'products/includes/quantity_input_script.html' %}
-{# Pass CSRF token to JS safely #}
-<script>
-  window.CSRF_TOKEN = "{{ csrf_token }}";
-</script>
 
 <script src="{% static 'js/cart.js' %}"></script>
 {% endblock %}

@@ -1,5 +1,14 @@
 /* global $, window */
 
+function getCookie(name) {
+  const cookies = document.cookie ? document.cookie.split("; ") : [];
+  for (let i = 0; i < cookies.length; i++) {
+    const [key, ...rest] = cookies[i].split("=");
+    if (key === name) return decodeURIComponent(rest.join("="));
+  }
+  return null;
+}
+
 function initBackToTop() {
   $(".btt-link").on("click", function (e) {
     e.preventDefault();
@@ -9,14 +18,17 @@ function initBackToTop() {
 
 function initRemoveItem(reloadFn = () => window.location.reload()) {
   $(".remove-item").on("click", function () {
-    // e.g. id="remove_19_20" -> "19_20"
-    const itemId = $(this).attr("id").replace("remove_", "");
-    const csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
+    const itemId = $(this).data("item-id");
     const url = `/cart/remove/${itemId}/`;
+    const csrfToken = getCookie("csrftoken");
 
-    $.post(url, { csrfmiddlewaretoken: csrfToken })
-      .done(reloadFn)
-      .fail(reloadFn);
+    $.ajax({
+      url,
+      type: "POST",
+      headers: { "X-CSRFToken": csrfToken },
+    })
+      .done(() => reloadFn())
+      .fail(() => reloadFn());
   });
 }
 
@@ -26,12 +38,6 @@ function initCartPage() {
   initRemoveItem();
 }
 
-if (typeof window !== "undefined") {
-  initCartPage();
-}
+if (typeof window !== "undefined") initCartPage();
 
-module.exports = {
-  initCartPage,
-  initBackToTop,
-  initRemoveItem,
-};
+module.exports = { initCartPage, initBackToTop, initRemoveItem };
