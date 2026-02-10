@@ -206,10 +206,13 @@
     {% endblock core_js %}
 
     {% block postloadjs %}
-    <script>
-        $('.toast').toast('show');
-    </script>
-    {% endblock postloadjs %}
+<script>
+    $('.toast').toast('show');
+</script>
+
+<script src="{% static 'js/cart.js' %}?v=944642e"></script>
+{% endblock postloadjs %}
+
 </body>
 
 </html>
