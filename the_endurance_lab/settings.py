@@ -62,6 +62,8 @@ INSTALLED_APPS = [
     'storages',
 ]
 
+AWS_STORAGE_BUCKET_NAME = 'the-endurance-lab-af104b96933b'
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 # --- SECURITY SETTINGS ---
 
 SECURE_BROWSER_XSS_FILTER = True
@@ -83,6 +85,7 @@ CSP_SCRIPT_SRC = (
     "https://code.jquery.com",
     "https://kit.fontawesome.com",
     "https://ka-f.fontawesome.com",
+    f"https://{AWS_S3_CUSTOM_DOMAIN}",
 )
 CSP_STYLE_SRC = (
     "'self'",
@@ -211,10 +214,6 @@ STORAGES = {
     },
 }
 
-STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
-
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -261,11 +260,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 if 'USE_AWS' in os.environ and not DEBUG:
     # Bucket Config
-    AWS_STORAGE_BUCKET_NAME = 'the-endurance-lab-af104b96933b'
     AWS_S3_REGION_NAME = 'eu-north-1'
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
     AWS_S3_SIGNATURE_VERSION = 's3v4'
     AWS_S3_OBJECT_PARAMETERS = {
         "CacheControl": "max-age=94608000",
