@@ -43,23 +43,23 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'cloudinary_storage',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
     'cloudinary',
     # Required for allauth
     'django.contrib.sites',
     'allauth',
     'allauth.account',
-    # Optional -- requires install using `django-allauth[socialaccount]`.
     'allauth.socialaccount',
+    'crispy_forms',
+    'crispy_bootstrap4',
+    # Optional -- requires install using `django-allauth[socialaccount]`.
+    'storages',
     'home',
     'products',
     'cart',
     'checkout',
-    'crispy_forms',
-    'crispy_bootstrap4',
     'profiles',
-    'storages',
 ]
 
 AWS_STORAGE_BUCKET_NAME = 'the-endurance-lab-af104b96933b'
@@ -123,13 +123,13 @@ CSP_CONNECT_SRC = (
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'csp.middleware.CSPMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'csp.middleware.CSPMiddleware',
 ]
 
 ROOT_URLCONF = 'the_endurance_lab.urls'
@@ -268,12 +268,12 @@ if 'USE_AWS' in os.environ and not DEBUG:
     AWS_S3_OBJECT_PARAMETERS = {
         "CacheControl": "max-age=94608000",
     }
-
+    AWS_LOCATION = 'static'
     # Static files served from s3
 
     STORAGES["staticfiles"] = {"BACKEND": "custom_storages.StaticStorage",}
     STATICFILES_STORAGE = 'custom_storages.StaticStorage'
-    STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
+    STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/"
 
 
 # Default primary key field type
