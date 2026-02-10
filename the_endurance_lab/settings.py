@@ -201,6 +201,7 @@ else:
     }
 # Cloudinary Settings
 
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 CLOUDINARY_STORAGE = {
     "CLOUDINARY_URL": os.environ.get("CLOUDINARY_URL"),
 }
@@ -271,6 +272,7 @@ if 'USE_AWS' in os.environ and not DEBUG:
     # Static files served from s3
 
     STORAGES["staticfiles"] = {"BACKEND": "custom_storages.StaticStorage",}
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
     STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
 
 
