@@ -53,10 +53,10 @@
                 {% endif %}
                 {% if request.user.is_superuser %}
                 <div class="mt-2">
-                    <a href="{% url 'edit_product' product.id %}" class="badge allauth-info-btn p-2 mr-0 text-uppercase">
+                    <a href="{% url 'edit_product' product.id %}" class="badge allauth-info-btn p-2 mr-0 rounded-0 text-uppercase">
                         Edit
                     </a>
-                    <a href="{% url 'delete_product' product.id %}" class="badge allauth-danger-btn p-2 text-uppercase">
+                    <a href="{% url 'delete_product' product.id %}" class="badge allauth-danger-btn p-2 rounded-0 text-uppercase">
                         Delete
                     </a>
                 </div>
@@ -105,13 +105,13 @@
                             </div>
                         </div>
                         <div class="col-12">
-                            <a href="{{ products_url }}" class="btn btn-custom text-uppercase icon mt-5">
+                            <a href="{{ products_url }}" class="btn allauth-info-btn text-uppercase rounded-0 icon mt-5">
                                 <span class="icon">
                                     <i class="fas fa-chevron-left"></i>
                                 </span>
                                 <span class="text-uppercase">Keep Shopping</span>
                             </a>
-                            <input type="submit" class="btn btn-custom text-uppercase icon mt-5" value="Add to Cart">
+                            <input type="submit" class="btn allauth-info-btn text-uppercase rounded-0 icon mt-5" value="Add to Cart">
                         </div>
                         <input type="hidden" name="redirect_url" value="{{ request.path }}">
                     </div>

@@ -117,6 +117,10 @@ h2 {
     font-weight: 400;
 }
 
+.home-page-headings  {
+    font-family: var(--primary-font);
+}
+
 /* -- Newsletter Signup --*/
 
 #newsletter {
@@ -150,6 +154,7 @@ h2 {
 .hero-btn {
     font-family: var(--primary-font);
     max-width: 280px;
+    letter-spacing: 3px;
     white-space: nowrap;
     padding: 3px 35px;
     font-size: clamp(1.1rem, 4vw, 1.5rem);

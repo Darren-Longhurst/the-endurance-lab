@@ -1,6 +1,8 @@
-<a href="{{ products_url }}" class="btn btn-custom text-uppercase btn-lg rounded-0">
-  <i class="fas fa-chevron-left mr-2"></i> Keep Shopping
-</a>
-<a href="{% url 'checkout' %}" class="btn btn-custom text-uppercase btn-lg rounded-0">
-  Secure Checkout <i class="fas fa-lock ml-2"></i>
-</a>
+<div class="d-flex flex-column flex-md-row justify-content-between mt-4">
+    <a href="{{ products_url }}" class="btn allauth-info-btn text-uppercase btn-lg rounded-0 mb-3 mb-md-0">
+        <i class="fas fa-chevron-left mr-2"></i> Keep Shopping
+    </a>
+    <a href="{% url 'checkout' %}" class="btn allauth-info-btn text-uppercase btn-lg rounded-0">
+        Secure Checkout <i class="fas fa-lock ml-2"></i>
+    </a>
+</div>
