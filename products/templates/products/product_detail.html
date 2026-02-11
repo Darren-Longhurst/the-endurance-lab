@@ -69,7 +69,7 @@
                         {% if product.variants.all %}
                         <div class="col-12 mt-3">
                             <p class="mb-2"><strong>Select {{ product.variants.first.variant_type }}:</strong></p>
-                            <select class="form-control rounded-0 w-50" name="product_variant" id="id_product_variant">
+                            <select class="form-control rounded-0 custom-select-width" name="product_variant" id="id_product_variant">
                                 {% for variant in product.variants.all %}
                                 <option value="{{ variant.id }}">
                                     {{ variant.variant_value }}

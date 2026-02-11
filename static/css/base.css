@@ -6,8 +6,8 @@
     --primary-color: #212529;
     --secondary-color: #ffffff;
     --highlight-color: #dc3545;
-    --header-offset-mobile: 60px;
-    --header-offset-desktop: 50px;
+    --header-offset-mobile: 3.75px;
+    --header-offset-desktop: 3.125px;
 }
 
 html {
@@ -66,6 +66,10 @@ h2 {
     font-weight: 600;
     padding: 5px 0;
     font-size: 20px;
+}
+
+.navbar-nav .nav-link {
+    white-space: nowrap;
 }
 
 /* --- 3. Hero Section (Home) --- */
@@ -199,6 +203,8 @@ h2 {
     align-items: center;
 }
 
+
+
 .badge-lab-tag-checkout:hover {
     background-color: var(--highlight-color);
     color: var(--secondary-color);
@@ -214,6 +220,18 @@ h2 {
 .allauth-info-btn:hover {
     background-color: transparent !important;
     color: var(--primary-color) !important;
+}
+
+.allauth-info-transparent-btn  {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.allauth-info-transparent-btn:hover  {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: 1px solid var(--primary-color);
 }
 
 .allauth-danger-btn {
@@ -291,14 +309,31 @@ h2 {
     z-index: 10;
 }
 
+.col-2 .sale-ribbon {
+    width: 0.5rem;
+    top: 0;
+    left: 0;
+}
+
 /* Marketing Section */
 .marketing .col-lg-4 {
     margin: 3.5rem 0;
     text-align: center;
 }
 
-.marketing .col-lg-4 p {
-    margin: 0 .75rem;
+/* Checkout Order Summary images */
+.col-2 .image-wrapper .sale-ribbon {
+    width: 50px !important;
+    min-width: 0 !important;
+    height: auto !important;
+    top: 0 !important;
+    left: 0 !important;
+}
+
+.col-2 .image-wrapper {
+    display: block;
+    position: relative;
+    padding: 0;
 }
 
 /* Latest Banner */
@@ -385,6 +420,17 @@ h2 {
     height: 32px;
 }
 
+/* Product Details*/
+
+.custom-select-width {
+    width: 100%;
+    max-width: 25rem;
+}
+
+#id_product_variant option {
+    white-space: normal;
+}
+
 /* Media Queries*/
 
 @media (min-width: 992px) {
@@ -400,11 +446,11 @@ h2 {
 
     .hero-boxed {
         min-height: 50vh;
-        padding: 20px;
+        padding: 1.25rem;
     }
 
     .hero-content {
-        padding: 0;
+        padding: 1rem;
     }
 
     .tag-text {

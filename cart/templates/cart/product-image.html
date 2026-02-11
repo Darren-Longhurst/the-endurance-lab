@@ -1,1 +1,7 @@
- <img class="img-fluid rounded" src="{{ item.product.display_image_url }}" alt="{{ item.product.name }}">
+{% load static %}
+<div class="image-wrapper position-relative">
+    {% if item.product.is_special_offer %}
+        <img src="{% static 'images/ribbon-image.png' %}" class="sale-ribbon" alt="Sale">
+    {% endif %}
+    <img class="img-fluid rounded" src="{{ item.product.display_image_url }}" alt="{{ item.product.name }}">
+</div>
