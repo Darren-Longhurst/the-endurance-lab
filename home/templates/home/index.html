@@ -128,10 +128,10 @@
                 <p class="mb-4">
                     Get all the latest product updates and offers straight to your inbox.
                 </p>
-                <form action="{{ home_url }}" method="POST" class="d-flex flex-column flex-sm-row justify-content-center">
+                <form action="{{ home_url }}" method="POST" class="d-flex flex-column flex-sm-row justify-content-center align-items-center">
                     {% csrf_token %}
-                    <input type="email" name="email" id="id_email" autocomplete="email" class="w-50" placeholder="Enter your email address" required>
-                    <button type="submit" class="btn btn-custom-newsletter mt-2 mt-sm-0 ml-sm-2">
+                    <input type="email" name="email" id="id_email" autocomplete="email" class="form-control rounded-0 border-white flex-grow-1 mb-2 mb-sm-0" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn btn-custom-newsletter ml-sm-2">
                         Subscribe
                     </button>
                 </form>
