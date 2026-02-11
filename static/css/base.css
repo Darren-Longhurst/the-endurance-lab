@@ -123,6 +123,10 @@ h2 {
 
 .home-page-headings  {
     font-family: var(--primary-font);
+    font-size: clamp(2rem, 8vw, 3.5rem);
+    line-height: 1.1;
+    word-wrap: break-word;
+    hyphens: auto;
 }
 
 /* -- Newsletter Signup --*/
