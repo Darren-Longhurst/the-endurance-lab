@@ -466,6 +466,18 @@ h2 {
         padding-top: 24px;
         padding-bottom: 48px;
     }
+
+    .hero-boxed {
+        padding-left: 0 !important;
+    }
+
+    .hero-content {
+        padding-left: 0 !important;
+    }
+
+    .optimised-line {
+        margin-left: -5px;
+    }
 }
 
 @media (max-width: 576px) {
