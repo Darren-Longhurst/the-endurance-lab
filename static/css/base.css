@@ -469,10 +469,12 @@ h2 {
 
     .hero-boxed {
         padding-left: 0 !important;
+        padding-right: 0 !important;
     }
 
     .hero-content {
-        padding-left: 0 !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
     }
 
     .optimised-line {
