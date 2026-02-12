@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import NewsletterSubscriber
-from .models import ContactInquiry
+from .models import ContactEnquiry
 
 # Register your models here.
 
@@ -11,7 +11,7 @@ class NewsletterSubscriberAdmin(admin.ModelAdmin):
     ordering = ('-date_added',)
 
 
-@admin.register(ContactInquiry)
+@admin.register(ContactEnquiry)
 class ContactEnquiryAdmin(admin.ModelAdmin):
     list_display = ('full_name', 'email', 'message')
     ordering = ('-date_submitted',)

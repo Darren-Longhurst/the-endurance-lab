@@ -13,7 +13,7 @@ class NewsletterSubscriber(models.Model):
 # Contact Form
 
 
-class ContactInquiry(models.Model):
+class ContactEnquiry(models.Model):
     full_name = models.CharField(max_length=100)
     email = models.EmailField()
     message = models.TextField()

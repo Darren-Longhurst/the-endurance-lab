@@ -7,6 +7,7 @@ from django.core.exceptions import PermissionDenied
 from django.views import View
 from products.models import Product
 from .forms import NewsletterForm
+from .models import ContactEnquiry
 
 
 def index(request):
@@ -45,6 +46,14 @@ def contact(request):
         if not name or not email or not message:
             messages.error(request, 'Please fill in all fields before submitting.')
             return redirect('contact')
+
+        # Save to database
+
+        ContactEnquiry.objects.create(
+            full_name=name,
+            email=email,
+            message=message
+        )
 
         # Send Email Logic
         send_mail(
