@@ -433,6 +433,17 @@ h2 {
     white-space: normal;
 }
 
+/* Product Management*/
+
+.product-management  {
+    padding-top: 2rem;
+}
+
+/* My Profile */
+.my-profile {
+    padding-top: 2rem;
+}
+
 /* Media Queries*/
 
 @media (min-width: 992px) {
