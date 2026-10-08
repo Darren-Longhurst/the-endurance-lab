@@ -9,10 +9,10 @@
 
     <form method="POST">
         {% csrf_token %}
-        <a href="{% url 'product_detail' product.id %}" class="badge allauth-info-btn">
+        <a href="{% url 'product_detail' product.id %}" class="badge allauth-info-btn rounded-0">
             Cancel
         </a>
-        <button type="submit" class="badge allauth-danger-btn">
+        <button type="submit" class="badge allauth-danger-btn rounded-0">
             Yes, delete
         </button>
     </form>

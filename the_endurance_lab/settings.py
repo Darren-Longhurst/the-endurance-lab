@@ -29,7 +29,7 @@ DEBUG = 'DEVELOPMENT' in os.environ
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    'the-endurance-lab-af104b96933b.herokuapp.com',  # Heroku
+    'endurancelab-80f98d723d52.herokuapp.com',  # Heroku
 ]
 
 SECURE_BROWSER_XSS_FILTER = True
