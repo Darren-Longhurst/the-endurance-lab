@@ -40,4 +40,4 @@ function initCartPage() {
 
 if (typeof window !== "undefined") initCartPage();
 
-module.exports = { initCartPage, initBackToTop, initRemoveItem };
+// module.exports = { initCartPage, initBackToTop, initRemoveItem };
